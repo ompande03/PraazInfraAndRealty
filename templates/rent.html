@@ -1,0 +1,160 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rental Properties | Praaz Infra and Realty</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="{% url 'home' %}">
+            <img
+                id="logo"
+                src="{% static 'images/praaz_icon.svg' %}"
+                alt="Praaz Infra and Realty Logo"
+                width="110"
+                height="110">
+        </a>
+
+        <h1>PRAAZ INFRA AND REALTY</h1>
+    </header>
+
+    <hr>
+
+    <!-- Navigation -->
+    <nav class="main-nav" aria-label="Main navigation">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'sales' %}">Sales</a>
+        <a href="{% url 'commercial' %}">Commercial</a>
+        <a href="{% url 'plots' %}">Plots / Land</a>
+        <a href="{% url 'interior' %}">Interior</a>
+    </nav>
+
+    <hr>
+
+    <!-- Page Introduction -->
+    <section id="home">
+        <h2>Find Your Perfect Rental Home</h2>
+
+        <p>
+            Discover comfortable homes, apartments and commercial
+            spaces available for rent with Praaz Infra and Realty.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- Rental Listings -->
+    <section id="featured-properties">
+
+        <h2>Available Rental Properties</h2>
+
+        <div class="property-listings">
+
+            {% for property in properties %}
+
+                <article class="ss-card">
+
+                    <!-- Clickable Property Information -->
+                    <a
+                        href="{% url 'property_detail' property.pk %}"
+                        class="property-card-link">
+
+                        {% if property.cover_image %}
+                            <img
+                                src="{{ property.cover_image.url }}"
+                                alt="{{ property.title }}">
+                        {% endif %}
+
+                        <h3>{{ property.title }}</h3>
+
+                        <p>{{ property.location }}</p>
+
+                        <p>
+                            ₹{{ property.price|floatformat:0 }}
+                        </p>
+
+                        {% if property.area_sqft %}
+                            <p>{{ property.area_sqft }} sq. ft.</p>
+                        {% endif %}
+
+                        {% if property.bedrooms %}
+                            <p>{{ property.bedrooms }} Bedrooms</p>
+                        {% endif %}
+
+                        {% if property.bathrooms %}
+                            <p>{{ property.bathrooms }} Bathrooms</p>
+                        {% endif %}
+
+                        <p>{{ property.description }}</p>
+
+                        <p>
+                            Availability:
+                            {{ property.get_availability_display }}
+                        </p>
+
+                        <span class="view-details-link">
+                            View Property Details →
+                        </span>
+
+                    </a>
+
+                    <!-- Contact Buttons -->
+                    <div class="property-contact">
+
+                        <a
+                            class="whatsapp-btn"
+                            href="https://wa.me/916203130033?text=Hello%2C%20I%20am%20interested%20in%20{{ property.title|urlencode }}%20in%20{{ property.location|urlencode }}."
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            WhatsApp
+                        </a>
+
+                        <a
+                            class="call-btn"
+                            href="tel:+916203130033">
+                            Call Now
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <p>
+                    No rental properties are currently available.
+                    Please check back soon!
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <h3>Praaz Infra and Realty</h3>
+
+        <p>Crafting Landmarks, Creating Legacies</p>
+
+        <p>Contact us to discuss your rental requirements.</p>
+
+        <p>&copy; 2026 Praaz Infra and Realty. All rights reserved.</p>
+
+    </footer>
+
+</body>
+</html>

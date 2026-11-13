@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="420 180 400 575" width="400" height="575" role="img" aria-label="Praaz Infra and Realty">
+  <title>Praaz Infra and Realty</title>
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#1d5af0"/><stop offset="0.5" stop-color="#0b3fd0"/><stop offset="1" stop-color="#03227f"/>
+    </linearGradient>
+    <linearGradient id="blueSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a3bc4"/><stop offset="1" stop-color="#0b46de"/>
+    </linearGradient>
+    <linearGradient id="blueText" x1="0" y1="793" x2="0" y2="906" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1c55e6"/><stop offset="1" stop-color="#05278f"/>
+    </linearGradient>
+    <linearGradient id="white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.6" stop-color="#eef1f8"/><stop offset="1" stop-color="#d3dbec"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#dfe5f2"/><stop offset="0.45" stop-color="#ffffff"/><stop offset="1" stop-color="#d5dcec"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2.5" dy="3.5" stdDeviation="3" flood-color="#0d1f5c" flood-opacity="0.30"/>
+    </filter>
+    <filter id="shSoft" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="1.5" dy="2.5" stdDeviation="2" flood-color="#0d1f5c" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- icon -->
+  <g id="icon">
+    <!-- white tower -->
+    <g filter="url(#sh)">
+      <polygon fill="url(#white)" stroke="#b7c2dd" stroke-width="1.2" stroke-linejoin="round" points="561,200 617,246 617,592 603,592 603,443 562,414"/>
+    </g>
+    <path d="M561.5,200 L561.5,414" stroke="#c9d1e4" stroke-width="1.2" fill="none"/>
+    <!-- blue frame line on tower -->
+    <path d="M562,414 L603,443 L603,598" fill="none" stroke="url(#blueSide)" stroke-width="6" stroke-linejoin="miter"/>
+    <!-- blue block -->
+    <g filter="url(#shSoft)">
+      <polygon fill="url(#blue)" points="489,467 549,417 549,650 489,702"/>
+    </g>
+    <!-- thin lines -->
+    <g fill="url(#blueSide)" filter="url(#shSoft)">
+      <rect x="620.5" y="302" width="4.5" height="296" rx="2"/>
+      <rect x="634.5" y="312" width="4.5" height="298" rx="2"/>
+      <rect x="648" y="323" width="4.5" height="298" rx="2"/>
+    </g>
+    <!-- P bowl -->
+    <g filter="url(#shSoft)">
+      <path fill="url(#blue)" d="M642,294 C700,285 760,310 783,370 C803,425 792,475 758,505 C730,528 695,536 661,533 C705,520 745,475 751,418 C755,365 725,318 680,302 C665,297 652,295 642,294 Z"/>
+    </g>
+    <!-- roof -->
+    <g filter="url(#sh)">
+      <path fill="url(#roof)" stroke="#b7c2dd" stroke-width="1.2" stroke-linejoin="round" d="M607,586 L795,733 L720,733 L720,722 L742,722 L607,607 L482,722 L505,722 L505,733 L437,733 Z"/>
+    </g>
+    <!-- window -->
+    <g fill="url(#blue)">
+      <rect x="591" y="677" width="18" height="18"/><rect x="612" y="677" width="18" height="18"/>
+      <rect x="591" y="698" width="18" height="18"/><rect x="612" y="698" width="18" height="18"/>
+    </g>
+  </g>
+</svg>

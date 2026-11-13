@@ -1,0 +1,59 @@
+
+<article class="ss-card">
+
+    <a href="{% url 'property_detail' property.pk %}"
+       class="property-card-link">
+
+        {% if property.cover_image %}
+            <img
+                src="{{ property.cover_image.url }}"
+                alt="{{ property.title }}">
+        {% endif %}
+
+        <h3>{{ property.title }}</h3>
+
+        <p>{{ property.location }}</p>
+
+        <p>₹{{ property.price|floatformat:0 }}</p>
+
+        {% if property.area_sqft %}
+            <p>{{ property.area_sqft }} sq. ft.</p>
+        {% endif %}
+
+        {% if property.bedrooms %}
+            <p>{{ property.bedrooms }} Bedrooms</p>
+        {% endif %}
+
+        {% if property.bathrooms %}
+            <p>{{ property.bathrooms }} Bathrooms</p>
+        {% endif %}
+
+        <p>{{ property.description }}</p>
+
+        <p>
+            Availability: {{ property.get_availability_display }}
+        </p>
+
+        <span class="view-details-link">
+            View Property Details →
+        </span>
+
+    </a>
+
+    <div class="property-contact">
+
+        <a
+            class="whatsapp-btn"
+            href="https://wa.me/916203130033?text=Hello%2C%20I%20am%20interested%20in%20{{ property.title|urlencode }}%20in%20{{ property.location|urlencode }}."
+            target="_blank"
+            rel="noopener noreferrer">
+            WhatsApp
+        </a>
+
+        <a class="call-btn" href="tel:+916203130033">
+            Call Now
+        </a>
+
+    </div>
+
+</article>

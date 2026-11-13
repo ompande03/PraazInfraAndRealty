@@ -1,0 +1,357 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Praaz Infra and Realty | Find Your Perfect Space</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <a href="{% url 'home' %}">
+            <img id="logo"
+                 src="{% static 'images/praaz_icon.svg' %}"
+                 alt="PRAAZ INFRA AND REALTY Logo"
+                 width="110"
+                 height="110">
+        </a>
+
+        <h1>PRAAZ INFRA AND REALTY</h1>
+
+    </header>
+
+    <hr>
+
+    <!-- ================= MAIN NAVIGATION ================= -->
+
+    <nav class="main-nav" aria-label="Main navigation">
+
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'rent' %}">Rent</a>
+        <a href="{% url 'sales' %}">Sales</a>
+        <a href="{% url 'commercial' %}">Commercial</a>
+        <a href="{% url 'plots' %}">Plots / Land</a>
+        <a href="{% url 'interior' %}">Interior</a>
+
+    </nav>
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="group">
+
+        <!-- Property Location Search -->
+        
+<!-- Property Location Search -->
+
+<section class="search-section">
+
+    <form action="{% url 'search_properties' %}"
+          method="GET"
+          class="property-search-form">
+
+        <div class="search-input-wrapper">
+
+            <svg class="location-search-icon"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16 16 4 4"></path>
+            </svg>
+
+            <input
+                type="search"
+                name="location"
+                id="query"
+                placeholder="Enter city, locality or project name..."
+                aria-label="Search property by location"
+                required>
+
+        </div>
+
+        <button type="submit" class="property-search-btn">
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16 16 4 4"></path>
+            </svg>
+
+            Search Properties
+        </button>
+
+    </form>
+
+    <p class="search-hint">
+        Find your perfect property with Praaz Infra and Realty
+    </p>
+
+</section>
+
+
+    </div>
+
+    <hr>
+
+    <!-- ================= HOME / HERO SECTION ================= -->
+
+    <section id="home">
+
+        <h2>Find Your Perfect Space</h2>
+
+        <p>
+            Welcome to Praaz Infra and Realty. We help you find rental homes,
+            buy and sell properties, discover commercial spaces and land,
+            and transform spaces with interior design solutions.
+        </p>
+
+        <img
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80"
+            alt="Beautiful modern house"
+            width="600">
+
+    </section>
+
+    <hr>
+
+    <!-- ================= OUR SERVICES ================= -->
+
+    <section id="services">
+
+        <h2>Our Services</h2>
+
+        <!-- Rent -->
+
+        <div class="ss-card" id="rent">
+
+            <h3>Rent</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80"
+                alt="House available for rent"
+                width="300">
+
+            <p>
+                Find homes, apartments, and commercial properties for rent.
+            </p>
+
+            <a href="{% url 'rent' %}">
+                Explore Rentals
+            </a>
+
+        </div>
+
+        <!-- Sales -->
+
+        <div class="ss-card" id="sales">
+
+            <h3>Sales</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80"
+                alt="Property for sale"
+                width="300">
+
+            <p>
+                Explore properties for buying, selling, and investment.
+            </p>
+
+            <a href="{% url 'sales' %}">
+                Explore Properties for Sale
+            </a>
+
+        </div>
+
+        <!-- Commercial -->
+
+        <div class="ss-card" id="commercial">
+
+            <h3>Commercial Properties</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80"
+                alt="Modern commercial office space"
+                width="300">
+
+            <p>
+                Discover offices, retail shops, showrooms, and business spaces.
+            </p>
+
+            <a href="{% url 'commercial' %}">
+                Explore Commercial Properties
+            </a>
+
+        </div>
+
+        <!-- Plots / Land -->
+
+        <div class="ss-card" id="plots">
+
+            <h3>Plots / Land</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80"
+                alt="Open land and green fields"
+                width="300">
+
+            <p>
+                Explore residential plots, commercial land,
+                and land investment options.
+            </p>
+
+            <a href="{% url 'plots' %}">
+                Explore Plots and Land
+            </a>
+
+        </div>
+
+        <!-- Interior Design -->
+
+        <div class="ss-card" id="interior">
+
+            <h3>Interior Design</h3>
+
+            <img
+                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=600&q=80"
+                alt="Modern interior design"
+                width="300">
+
+            <p>
+                Transform your home or office with beautiful interior designs.
+            </p>
+
+            <a href="{% url 'interior' %}">
+                Explore Interior Designs
+            </a>
+
+        </div>
+
+    </section>
+
+    <hr>
+
+    <!-- ================= FEATURED PROPERTIES ================= -->
+
+    <section id="featured-properties">
+
+        <h2>Featured Properties</h2>
+
+        <div class="property-listings">
+
+            {% for property in featured_properties %}
+
+                {% include 'includes/property_card.html' with property=property %}
+
+            {% empty %}
+
+                <p>
+                    No featured properties available yet.
+                    Please check back soon!
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <hr>
+
+    <!-- ================= CONTACT / FOOTER ================= -->
+
+    <footer id="contact">
+
+        <h3>Praaz Infra and Realty</h3>
+
+        <p>Crafting Landmarks, Creating Legacies</p>
+
+        <p>
+            Contact us to discuss your property requirements.
+        </p>
+
+        <p>
+            <a href="tel:+916203130033">Call: +91 6203130033</a>
+        </p>
+
+        <p>
+            <a href="https://wa.me/916203130033"
+               target="_blank"
+               rel="noopener noreferrer">
+                Contact us on WhatsApp
+            </a>
+        </p>
+
+        <p>
+            &copy; 2026 Praaz Infra and Realty. All rights reserved.
+        </p>
+
+        <!-- Social Media -->
+
+        
+<!-- SOCIAL MEDIA PLATFORMS -->
+
+<div id="social-platforms">
+
+    <!-- Facebook -->
+    <a class="btn btn-icon btn-facebook"
+       href="https://www.facebook.com/share/1MJWwW9mLT/?mibextid=wwXIfr"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit Praaz Infra and Realty on Facebook">
+
+        <span>Facebook</span>
+
+    </a>
+
+    <!-- Instagram -->
+    <a class="btn btn-icon btn-instagram"
+       href="https://www.instagram.com/praazinfraandrealty/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit Praaz Infra and Realty on Instagram">
+
+        <span>Instagram</span>
+
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="btn btn-icon btn-whatsapp"
+       href="https://wa.me/919355910319"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Chat with Praaz Infra and Realty on WhatsApp">
+
+        <span>WhatsApp</span>
+
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="btn btn-icon btn-linkedin"
+       href="https://www.linkedin.com/in/pratyush-sahay-27a51743a/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Visit LinkedIn profile">
+
+        <span>LinkedIn</span>
+
+    </a>
+
+</div>
+
+
+    </footer>
+
+</body>
+</html>

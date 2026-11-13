@@ -1,0 +1,2483 @@
+/* ==========================================================================
+
+   Praaz Infra and Realty — Shared Stylesheet (blue–white gradient theme)
+
+   Save as styles.css next to your HTML files and add this inside <head>:
+
+   <link rel="stylesheet" href="styles.css">
+
+   ========================================================================== */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+
+
+/* ---------- Design tokens ---------- */
+
+:root {
+
+  --royal: #0a2fc4;
+
+  --blue: #0b43d9;
+
+  --azure: #2f6bff;
+
+  --sky: #6aa0ff;
+
+  --navy: #041a5c;
+
+  --ink: #0c1a3d;
+
+  --text: #1c2a4a;
+
+  --muted: #5b6b8c;
+
+  --line: #dbe6ff;
+
+  --soft: #f2f6ff;
+
+
+
+  --grad-brand: linear-gradient(135deg, #031347 0%, #0a2fc4 52%, #3d78ff 100%);
+
+  --grad-btn: linear-gradient(120deg, #0a2fc4, #2f6bff);
+
+  --grad-page: linear-gradient(180deg, #ffffff 0%, #f1f6ff 42%, #e0ebff 100%);
+
+
+
+  --shadow-sm: 0 4px 14px rgba(10, 47, 196, .08);
+
+  --shadow-md: 0 14px 36px rgba(10, 47, 196, .15);
+
+  --shadow-lg: 0 28px 60px rgba(4, 26, 92, .24);
+
+
+
+  --r-sm: 12px;
+
+  --r-md: 20px;
+
+  --r-lg: 32px;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  --t: 260ms;
+
+
+
+  --font-body: Inter, "Segoe UI", Roboto, system-ui, -apple-system, Arial, sans-serif;
+
+  --font-head: "Plus Jakarta Sans", Inter, "Segoe UI", system-ui, Arial, sans-serif;
+
+}
+
+
+
+/* ---------- Base ---------- */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; background: #eef4ff; }
+
+body {
+
+  min-height: 100vh;
+
+  color: var(--text);
+
+  font-family: var(--font-body);
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+  background:
+
+    radial-gradient(1100px 520px at 8% -4%, rgba(47, 107, 255, .13), transparent 60%),
+
+    radial-gradient(900px 480px at 100% 30%, rgba(106, 160, 255, .12), transparent 60%),
+
+    var(--grad-page);
+
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: var(--royal); text-decoration: none; transition: color var(--t) var(--ease); }
+
+a:hover { color: var(--azure); }
+
+hr { display: none; }                      /* spacing is handled by the layout */
+
+::selection { background: #cfe0ff; color: var(--navy); }
+
+:focus-visible { outline: 3px solid rgba(47, 107, 255, .45); outline-offset: 3px; border-radius: 6px; }
+
+
+
+/* ---------- Header ---------- */
+
+body > header {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  color: #fff;
+
+  padding: clamp(34px, 6vw, 62px) 24px clamp(46px, 7vw, 78px);
+
+  background: var(--grad-brand);
+
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+body > header::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+
+    radial-gradient(circle at 88% -10%, rgba(255, 255, 255, 0.618), transparent 42%),
+
+    radial-gradient(circle at 4% 125%, rgba(106, 161, 255, 0.879), transparent 48%);
+
+}
+
+body > header::after {                    /* soft white fade at the bottom edge */
+
+  content: "";
+
+  position: absolute;
+
+  left: 0; right: 0; bottom: 0;
+
+  height: 36px;
+
+  z-index: -1;
+
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.544), transparent);
+
+}
+
+header h1 {
+
+  font-family: var(--font-head);
+
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+
+  font-weight: 800;
+
+  letter-spacing: -.035em;
+
+  line-height: 1.12;
+
+  text-shadow: 0 4px 24px rgba(0, 10, 60, .35);
+
+}
+
+header p {
+
+  margin-top: 10px;
+
+  color: rgba(255, 255, 255, .86);
+
+  font-size: clamp(.98rem, 1.6vw, 1.15rem);
+
+  letter-spacing: .02em;
+
+}
+
+
+
+/* ---------- Navigation (text "|" separators are hidden via font-size:0) ---------- */
+
+nav:not(.sidebar-rail) {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  font-size: 0;
+
+}
+
+header nav { margin-top: 26px; }
+
+header nav a {
+
+  font-size: .95rem;
+
+  font-weight: 600;
+
+  padding: 10px 22px;
+
+  border-radius: 999px;
+
+  color: rgba(255, 255, 255, .94);
+
+  background: rgba(255, 255, 255, .11);
+
+  border: 1px solid rgba(255, 255, 255, .22);
+
+  backdrop-filter: blur(8px);
+
+  transition: background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+
+}
+
+header nav a:hover {
+
+  color: var(--royal);
+
+  background: #fff;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 22px rgba(0, 10, 60, .25);
+
+}
+
+/* a nav placed outside the header becomes a floating pill bar */
+
+body > nav:not(.sidebar-rail) {
+
+  position: relative;
+
+  z-index: 5;
+
+  width: fit-content;
+
+  max-width: calc(100% - 32px);
+
+  margin: -28px auto 0;
+
+  padding: 7px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: 999px;
+
+  box-shadow: var(--shadow-md);
+
+}
+
+body > nav:not(.sidebar-rail) a {
+
+  font-size: .94rem;
+
+  font-weight: 600;
+
+  padding: 9px 20px;
+
+  border-radius: 999px;
+
+  color: var(--royal);
+
+}
+
+body > nav:not(.sidebar-rail) a:hover { color: #fff; background: var(--grad-btn); }
+
+
+
+/* ---------- Layout ---------- */
+
+main, body > section {
+
+  width: min(1180px, calc(100% - 40px));
+
+  margin-inline: auto;
+
+}
+
+main { padding: 46px 0 8px; }
+
+body > section { margin-block: 56px; }
+
+
+
+section {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+
+  column-gap: 26px;
+
+  row-gap: 26px;
+
+  margin-bottom: 64px;
+
+}
+
+section > :not(article):not(.ss-card) { grid-column: 1 / -1; }
+
+
+
+section h2 {
+
+  font-family: var(--font-head);
+
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+
+  font-weight: 800;
+
+  letter-spacing: -.03em;
+
+  line-height: 1.2;
+
+  color: var(--navy);
+
+}
+
+section h2::after {
+
+  content: "";
+
+  display: block;
+
+  width: 58px;
+
+  height: 4px;
+
+  margin-top: 12px;
+
+  border-radius: 4px;
+
+  background: linear-gradient(90deg, var(--royal), var(--sky));
+
+}
+
+section > p { max-width: 70ch; color: var(--muted); font-size: 1.05rem; }
+
+section > h2 + p { margin-top: -12px; }
+
+section h3 { font-family: var(--font-head); color: var(--navy); font-size: 1.2rem; line-height: 1.35; }
+
+
+
+/* page intro band (first section inside <main>) */
+
+main > section:first-child {
+
+  padding: clamp(26px, 4.5vw, 48px);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--r-lg);
+
+  background: linear-gradient(120deg, #ffffff 0%, #eaf1ff 58%, #d3e3ff 100%);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+
+
+/* ---------- Cards ---------- */
+
+article, .ss-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--r-md);
+
+  box-shadow: var(--shadow-sm);
+
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
+
+  animation: rise 560ms var(--ease) both;
+
+}
+
+article:nth-of-type(2n), .ss-card:nth-of-type(2n) { animation-delay: 80ms; }
+
+article:nth-of-type(3n), .ss-card:nth-of-type(3n) { animation-delay: 160ms; }
+
+article:hover, .ss-card:hover {
+
+  transform: translateY(-6px);
+
+  border-color: #b7ceff;
+
+  box-shadow: var(--shadow-md);
+
+}
+
+article img, .ss-card img {
+
+  width: 100%;
+
+  height: 230px;
+
+  object-fit: cover;
+
+  background: linear-gradient(135deg, #e3edff, #f7faff);
+
+  transition: transform 700ms var(--ease);
+
+}
+
+article:hover img, .ss-card:hover img { transform: scale(1.05); }
+
+
+
+article > :not(img), .ss-card > :not(img) { margin-inline: 24px; }
+
+article > h3, .ss-card > h3 { margin-top: 22px; margin-bottom: 6px; }
+
+article > h3 + img, .ss-card > h3 + img { margin-top: 14px; }
+
+article > img + p, .ss-card > img + p { margin-top: 18px; }
+
+article p, .ss-card p { margin-block: 3px; color: var(--muted); font-size: .96rem; }
+
+article p strong { color: var(--ink); font-weight: 600; }
+
+article > :last-child, .ss-card > :last-child { margin-bottom: 24px; }
+
+article > p:has(+ a), .ss-card > p:has(+ a) { margin-bottom: 18px; }
+
+article > a, .ss-card > a { margin-top: auto; }
+
+
+
+/* ---------- Buttons / call-to-action links ---------- */
+
+.btn, article > a, .ss-card > a, section > p > a, section > a {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  width: fit-content;
+
+  padding: 11px 22px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  background: var(--grad-btn);
+
+  font: 600 .93rem var(--font-body);
+
+  box-shadow: 0 8px 18px rgba(10, 47, 196, .28);
+
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), filter var(--t) var(--ease);
+
+}
+
+.btn:hover, article > a:hover, .ss-card > a:hover, section > p > a:hover, section > a:hover {
+
+  color: #fff;
+
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+
+  box-shadow: 0 14px 28px rgba(10, 47, 196, .34);
+
+}
+
+article > a::after, .ss-card > a::after { content: "→"; transition: transform var(--t) var(--ease); }
+
+article > a:hover::after, .ss-card > a:hover::after { transform: translateX(4px); }
+
+
+
+button, input[type="submit"], input[type="button"] {
+
+  padding: 11px 22px;
+
+  border: 0;
+
+  border-radius: 999px;
+
+  color: #fff;
+
+  background: var(--grad-btn);
+
+  font: 600 .93rem var(--font-body);
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(10, 47, 196, .26);
+
+  transition: transform var(--t) var(--ease), filter var(--t) var(--ease);
+
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+
+
+/* ---------- Home hero (section#home) ---------- */
+
+#home {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  grid-template-columns: 1.05fr .95fr;
+
+  align-items: center;
+
+  column-gap: clamp(24px, 5vw, 64px);
+
+  row-gap: 14px;
+
+  padding: clamp(30px, 6vw, 70px);
+
+  border-radius: var(--r-lg);
+
+  color: #fff;
+
+  background: linear-gradient(115deg, #0a2fc4 0%, #2f6bff 44%, #dce9ff 80%, #ffffff 100%);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+#home::before {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: -1;
+
+  width: 420px; height: 420px;
+
+  top: -190px; left: -120px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, .22);
+
+  box-shadow: 0 0 0 46px rgba(255, 255, 255, .05), 0 0 0 96px rgba(255, 255, 255, .03);
+
+}
+
+#home > h2, #home > p { grid-column: 1; }
+
+#home > h2 {
+
+  align-self: end;
+
+  color: #fff;
+
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+
+  letter-spacing: -.045em;
+
+  line-height: 1.08;
+
+}
+
+#home > h2::after { background: rgba(255, 255, 255, .9); }
+
+#home > p { align-self: start; color: rgba(255, 255, 255, .9); font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 48ch; }
+
+#home > img {
+
+  grid-column: 2;
+
+  grid-row: 1 / span 2;
+
+  width: 100%;
+
+  height: clamp(260px, 34vw, 430px);
+
+  object-fit: cover;
+
+  border: 6px solid rgba(255, 255, 255, .92);
+
+  border-radius: 26px;
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+
+
+/* ---------- Closing call-to-action band (last section inside <main>) ---------- */
+
+main > section:last-child {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  padding: clamp(28px, 5vw, 56px);
+
+  border-radius: var(--r-lg);
+
+  color: #fff;
+
+  background: var(--grad-brand);
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+main > section:last-child::before {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: -1;
+
+  inset: 0;
+
+  background: radial-gradient(circle at 92% 0%, rgba(255, 255, 255, .3), transparent 45%);
+
+}
+
+main > section:last-child h2, main > section:last-child h3 { color: #fff; }
+
+main > section:last-child h2::after { background: rgba(255, 255, 255, .85); }
+
+main > section:last-child > p { color: rgba(255, 255, 255, .86); }
+
+main > section:last-child ul {
+
+  list-style: none;
+
+  padding: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 10px;
+
+}
+
+main > section:last-child li {
+
+  padding: 11px 16px;
+
+  border: 1px solid rgba(255, 255, 255, .2);
+
+  border-radius: var(--r-sm);
+
+  background: rgba(255, 255, 255, .11);
+
+  font-weight: 500;
+
+}
+
+main > section:last-child a,
+
+main > section:last-child > p > a {
+
+  color: var(--royal);
+
+  background: #fff;
+
+  box-shadow: 0 10px 24px rgba(0, 10, 60, .3);
+
+}
+
+main > section:last-child a:hover { color: var(--navy); }
+
+
+
+/* ---------- Lists, forms, tables (admin / enquiry pages) ---------- */
+
+section ul { padding-left: 1.3rem; }
+
+li { margin: 4px 0; }
+
+label { display: block; margin-bottom: 6px; color: var(--navy); font-weight: 600; font-size: .94rem; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],
+
+input[type="password"], input[type="search"], input[type="url"], input[type="date"],
+
+select, textarea {
+
+  width: 100%;
+
+  min-width: 0;
+
+  padding: 12px 15px;
+
+  color: var(--text);
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--r-sm);
+
+  font: inherit;
+
+  transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+
+}
+
+input:focus, select:focus, textarea:focus {
+
+  outline: none;
+
+  border-color: var(--azure);
+
+  box-shadow: 0 0 0 4px rgba(47, 107, 255, .14);
+
+}
+
+textarea { min-height: 130px; resize: vertical; }
+
+input[type="file"] { padding: 10px; border: 1px dashed #a9c3ff; border-radius: var(--r-sm); background: var(--soft); width: 100%; }
+
+form:not(.search-panel) {
+
+  display: grid;
+
+  gap: 16px;
+
+  max-width: 680px;
+
+  padding: clamp(20px, 3.5vw, 34px);
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--r-md);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+table {
+
+  width: 100%;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--r-md);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+th { padding: 14px 16px; color: #fff; background: var(--grad-brand); text-align: left; font-weight: 600; font-size: .92rem; }
+
+td { padding: 13px 16px; border-bottom: 1px solid #edf3ff; }
+
+tr:last-child td { border-bottom: 0; }
+
+tbody tr:hover td { background: #f5f9ff; }
+
+
+
+/* ---------- Footer ---------- */
+
+footer {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  margin-top: 72px;
+
+  padding: 52px 24px 42px;
+
+  text-align: center;
+
+  color: rgba(255, 255, 255, .82);
+
+  background: var(--grad-brand);
+
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+
+}
+
+footer::before {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: -1;
+
+  inset: 0;
+
+  background: radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .22), transparent 45%);
+
+}
+
+footer h3 { margin-bottom: 8px; color: #fff; font-family: var(--font-head); font-size: 1.45rem; letter-spacing: -.02em; }
+
+footer p + p { margin-top: 6px; font-size: .88rem; color: rgba(255, 255, 255, .66); }
+
+footer a { color: #cfe0ff; }
+
+footer a:hover { color: #fff; text-decoration: underline; }
+
+
+
+/* ---------- Home page floating controls (override the inline styles on home.html) ---------- */
+
+body .menu-btn, body .search-btn {
+
+  color: var(--royal);
+
+  background: rgba(255, 255, 255, .92);
+
+  border: 1px solid var(--line);
+
+  border-radius: 14px;
+
+  font-weight: 600;
+
+  box-shadow: var(--shadow-md);
+
+  backdrop-filter: blur(10px);
+
+  transition: background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease);
+
+}
+
+body .menu-btn:hover, body .search-btn:hover { color: #fff; background: var(--grad-btn); transform: translateY(-2px); filter: none; }
+
+
+
+body .sidebar-rail {
+
+  width: 184px;
+
+  padding: 10px;
+
+  gap: 4px;
+
+  background: rgba(255, 255, 255, .86);
+
+  border: 1px solid var(--line);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-md);
+
+  backdrop-filter: blur(16px);
+
+}
+
+body .sidebar-rail button {
+
+  padding: 12px 16px;
+
+  color: #12308f;
+
+  background: transparent;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  box-shadow: none;
+
+  filter: none;
+
+}
+
+body .sidebar-rail button:hover, body .sidebar-rail button.is-active {
+
+  color: #fff;
+
+  background: var(--grad-btn);
+
+  transform: none;
+
+  box-shadow: 0 8px 18px rgba(10, 47, 196, .28);
+
+}
+
+
+
+body .search-panel {
+
+  padding: 10px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-lg);
+
+}
+
+body .search-panel input { border-radius: 12px; }
+
+body .search-panel button { border-radius: 12px; background: var(--grad-btn); }
+
+
+
+/* leave room for the fixed sidebar on wide screens */
+
+@media (min-width: 901px) {
+
+  body:has(> .sidebar-rail) { padding-left: 224px; }
+
+  /* keep header and footer full-width while their text stays centred beside the sidebar */
+
+  body:has(> .sidebar-rail) > header,
+
+  body:has(> .sidebar-rail) > footer { margin-left: -224px; padding-left: calc(224px + 24px); }
+
+}
+
+
+
+/* ---------- Animation ---------- */
+
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+
+  * , *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+
+}
+
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+
+  /* sidebar becomes a bottom bar on tablets and phones */
+
+  body { padding-bottom: 92px; }
+
+  body .sidebar-rail {
+
+    top: auto; bottom: 12px; left: 12px; right: 12px;
+
+    width: auto;
+
+    flex-direction: row;
+
+    overflow-x: auto;
+
+    padding: 8px;
+
+    transform: none;
+
+    border-radius: 18px;
+
+  }
+
+  body .sidebar-rail button { width: auto; flex: 0 0 auto; padding: 11px 16px; font-size: .88rem; text-align: center; white-space: nowrap; }
+
+  body .sidebar-rail button:hover, body .sidebar-rail button.is-active { padding-left: 16px; }
+
+  #home { grid-template-columns: 1fr; background: linear-gradient(170deg, #0a2fc4 0%, #2f6bff 48%, #dce9ff 100%); }
+
+  #home > h2, #home > p, #home > img { grid-column: 1; grid-row: auto; }
+
+  #home > h2 { align-self: auto; }
+
+  #home > img { height: clamp(220px, 52vw, 340px); }
+
+}
+
+@media (max-width: 600px) {
+
+  body { font-size: 15px; }
+
+  main, body > section { width: calc(100% - 28px); }
+
+  main { padding-top: 34px; }
+
+  body > section { margin-block: 38px; }
+
+  body > section#home, body > section#services { margin-left: auto; margin-right: auto; }  /* beats home.html's inline margin-left:0 */
+
+  section { margin-bottom: 44px; row-gap: 20px; }
+
+  body > header { padding-top: 74px; border-radius: 0 0 26px 26px; }
+
+  header nav a { padding: 9px 15px; font-size: .88rem; }
+
+  body > nav:not(.sidebar-rail) a { padding: 8px 14px; font-size: .88rem; }
+
+  article img, .ss-card img { height: 200px; }
+
+  footer { border-radius: 26px 26px 0 0; padding: 40px 18px 34px; }
+
+}
+
+
+
+.group {
+
+  display: flex;
+
+  line-height: 28px;
+
+  align-items: center;
+
+  position: relative;
+
+
+
+  width: 100%;
+
+  max-width: 500px; /* Increase the search bar length */
+
+  margin: 20px auto; /* Centers it horizontally */
+
+}
+
+
+
+.input {
+
+  font-family: "Montserrat", sans-serif;
+
+  width: 100%;
+
+  height: 48px;
+
+  padding-left: 2.8rem;
+
+  padding-right: 1rem;
+
+  box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+
+  border: 0;
+
+  border-radius: 12px;
+
+  background-color: #16171d;
+
+  outline: none;
+
+  color: #bdbecb;
+
+  transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+
+  cursor: text;
+
+  z-index: 0;
+
+}
+
+
+
+.input::placeholder {
+
+  color: #bdbecb;
+
+}
+
+
+
+.input:hover {
+
+  box-shadow: 0 0 0 2.5px #2f303d, 0 0 25px -15px #000;
+
+}
+
+
+
+.input:active {
+
+  transform: scale(0.98);
+
+}
+
+
+
+.input:focus {
+
+  box-shadow: 0 0 0 2.5px #2f303d;
+
+}
+
+
+
+.search-icon {
+
+  position: absolute;
+
+  right: 1rem;
+
+  fill: #bdbecb;
+
+  width: 1rem;
+
+  height: 1rem;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+}
+
+
+
+#logo {
+
+  display: block;       /* images are inline by default, so margin auto needs block */
+
+  margin: 0 auto;       /* centres it horizontally */
+
+  width: min(150px, 90%);
+
+  height: auto;
+
+}
+
+/* ========================================================================
+   Final refinements: logo, home controls, sidebar and service-card motion
+   ======================================================================== */
+
+/* Logo: retain the original image proportions and keep the full artwork visible. */
+/* Remove the white background behind the logo */
+#logo,
+.site-logo,
+.logo-img,
+body > header img,
+.logo-wrap img,
+.brand-logo img {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    object-fit: contain;
+}
+
+body > header {
+    background: var(--grad-brand);
+}
+
+.logo-wrap,
+.brand-logo {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+#logo {
+    display: block;
+    width: 110px;       /* Smaller logo */
+    height: auto;
+    max-width: 90%;
+    max-height: 110px;
+    object-fit: contain;
+    margin: 0 auto;
+    background: transparent;
+}
+
+@media (max-width: 600px) {
+    #logo {
+        width: 85px;
+        max-height: 85px;
+    }
+}
+
+h1 {
+    word-spacing: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+/* Home page menu/search controls sit above hero decoration and never get covered. */
+body .menu-btn,
+body .search-btn {
+  position: relative;
+  z-index: 1002;
+  min-height: 44px;
+  cursor: pointer;
+  user-select: none;
+}
+
+body .menu-btn {
+  border: 1px solid rgba(219, 230, 255, .98);
+}
+
+/* Sidebar rail: stable desktop panel, scroll-safe, with clear active/hover feedback. */
+body .sidebar-rail {
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 16px;
+  right: auto;
+  bottom: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 184px;
+  max-height: calc(100vh - 36px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px;
+  gap: 5px;
+  border: 1px solid rgba(219, 230, 255, .98);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 18px 44px rgba(4, 26, 92, .19);
+  transform: translateY(-50%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  scrollbar-width: thin;
+  scrollbar-color: #b8ccff transparent;
+}
+
+body .sidebar-rail button,
+body .sidebar-rail a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #12308f;
+  background: transparent;
+  box-shadow: none;
+  font-size: .91rem;
+  font-weight: 650;
+  line-height: 1.3;
+  text-align: left;
+  text-decoration: none;
+  white-space: normal;
+  transform: none;
+  transition: color var(--t) var(--ease), background var(--t) var(--ease), border-color var(--t) var(--ease), padding-left var(--t) var(--ease);
+}
+
+body .sidebar-rail button:hover,
+body .sidebar-rail a:hover,
+body .sidebar-rail button.is-active,
+body .sidebar-rail a.is-active,
+body .sidebar-rail button[aria-current="page"],
+body .sidebar-rail a[aria-current="page"] {
+  color: #fff;
+  border-color: rgba(255, 255, 255, .25);
+  background: var(--grad-btn);
+  padding-left: 18px;
+  box-shadow: 0 8px 18px rgba(10, 47, 196, .2);
+}
+
+body .sidebar-rail button:focus-visible,
+body .sidebar-rail a:focus-visible {
+  outline-offset: 2px;
+}
+
+body .sidebar-rail[hidden] {
+  display: none !important;
+}
+
+/* Keep the page clear of the fixed rail on desktop, but retain a full-width header/footer. */
+@media (min-width: 901px) {
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) {
+    padding-left: 224px;
+  }
+
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) > header,
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) > footer {
+    width: calc(100% + 224px);
+    margin-left: -224px;
+  }
+}
+
+/* The services grid receives a more intentional staggered entrance. */
+#services .ss-card,
+#services article,
+#services .service-card,
+#services .property-card,
+.services-container > *,
+.ss-container > * {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+  animation: service-card-enter 680ms cubic-bezier(.2, .7, .2, 1) both;
+  will-change: transform, box-shadow;
+}
+
+#services .ss-card:nth-child(2),
+#services article:nth-child(2),
+#services .service-card:nth-child(2),
+.services-container > :nth-child(2),
+.ss-container > :nth-child(2) { animation-delay: 80ms; }
+
+#services .ss-card:nth-child(3),
+#services article:nth-child(3),
+#services .service-card:nth-child(3),
+.services-container > :nth-child(3),
+.ss-container > :nth-child(3) { animation-delay: 150ms; }
+
+#services .ss-card:nth-child(4),
+#services article:nth-child(4),
+#services .service-card:nth-child(4),
+.services-container > :nth-child(4),
+.ss-container > :nth-child(4) { animation-delay: 220ms; }
+
+#services .ss-card::before,
+#services article::before,
+#services .service-card::before,
+.services-container > *::before,
+.ss-container > *::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: -130%;
+  width: 72%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .62), transparent);
+}
+
+#services .ss-card:hover,
+#services article:hover,
+#services .service-card:hover,
+#services .property-card:hover,
+.services-container > *:hover,
+.ss-container > *:hover {
+  transform: translateY(-8px) scale(1.012);
+  border-color: #9ebcff;
+  box-shadow: 0 22px 46px rgba(10, 47, 196, .17);
+}
+
+#services .ss-card:hover::before,
+#services article:hover::before,
+#services .service-card:hover::before,
+.services-container > *:hover::before,
+.ss-container > *:hover::before {
+  opacity: 1;
+  animation: card-sheen 780ms ease-out;
+}
+
+#services .ss-card img,
+#services article img,
+#services .service-card img,
+.services-container > * img,
+.ss-container > * img {
+  transform-origin: center;
+  transition: transform 700ms cubic-bezier(.2, .7, .2, 1), filter 500ms ease;
+}
+
+#services .ss-card:hover img,
+#services article:hover img,
+#services .service-card:hover img,
+.services-container > *:hover img,
+.ss-container > *:hover img {
+  transform: scale(1.055);
+  filter: saturate(1.06);
+}
+
+/* Make text and cards remain readable with the blue-white logo palette. */
+#services .ss-card,
+#services article,
+#services .service-card {
+  background: linear-gradient(155deg, #fff 0%, #fff 62%, #f0f5ff 100%);
+  border-color: #d7e3ff;
+}
+
+#services .ss-card h2,
+#services .ss-card h3,
+#services article h2,
+#services article h3,
+#services .service-card h2,
+#services .service-card h3 {
+  color: var(--navy);
+}
+
+@keyframes logo-arrive {
+  from { opacity: 0; transform: translateY(-8px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes service-card-enter {
+  from { opacity: 0; translate: 0 22px; scale: .985; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes card-sheen {
+  from { left: -130%; }
+  to { left: 165%; }
+}
+
+/* On narrow screens, the sidebar becomes an accessible horizontal bottom menu. */
+@media (max-width: 900px) {
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) {
+    padding-left: 0;
+  }
+
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) > header,
+  body:has(> .sidebar-rail:not([hidden]):not([style*="display: none"]):not([style*="display:none"])) > footer {
+    width: auto;
+    margin-left: 0;
+  }
+
+  body .sidebar-rail {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+    max-height: 82px;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px;
+    gap: 6px;
+    transform: none;
+    border-radius: 17px;
+  }
+
+  body .sidebar-rail button,
+  body .sidebar-rail a {
+    width: auto;
+    min-width: max-content;
+    min-height: 42px;
+    padding: 10px 14px;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  body .sidebar-rail button:hover,
+  body .sidebar-rail a:hover,
+  body .sidebar-rail button.is-active,
+  body .sidebar-rail a.is-active {
+    padding-left: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  #logo,
+  .site-logo,
+  .logo-img,
+  body > header .logo img,
+  body > header img.site-logo,
+  body > header img.logo-img,
+  .logo-wrap img,
+  .brand-logo img {
+    max-width: min(150px, 48vw);
+    max-height: 94px;
+    margin-bottom: 12px;
+  }
+
+  body .sidebar-rail button,
+  body .sidebar-rail a {
+    font-size: .82rem;
+    padding: 9px 12px;
+  }
+
+  #services .ss-card:hover,
+  #services article:hover,
+  #services .service-card:hover,
+  .services-container > *:hover,
+  .ss-container > *:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #logo,
+  .site-logo,
+  .logo-img,
+  #services .ss-card,
+  #services article,
+  #services .service-card,
+  .services-container > *,
+  .ss-container > * {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  #services .ss-card::before,
+  #services article::before,
+  #services .service-card::before,
+  .services-container > *::before,
+  .ss-container > *::before {
+    display: none;
+  }
+}
+
+/* ========================================================================
+   PRAAZ LOGO-MATCHED PALETTE — final logo contrast refinement
+   The SVG uses cobalt/royal blues with white and silver architectural details.
+   Keep the header/nav deep blue, and place the logo on a cool-white glass tile
+   so the blue wordmark stays vivid and the white tower remains defined.
+   ======================================================================== */
+:root {
+  --logo-cobalt: #0A2FC4;
+  --logo-blue: #0B43D9;
+  --logo-electric: #2F6BFF;
+  --logo-sky: #6AA0FF;
+  --logo-navy: #041A5C;
+  --logo-ice: #F2F6FF;
+  --logo-line: #DBE6FF;
+  --logo-text: #0C1A3D;
+  --logo-muted: #5B6B8C;
+
+  --royal: var(--logo-cobalt);
+  --blue: var(--logo-blue);
+  --azure: var(--logo-electric);
+  --sky: var(--logo-sky);
+  --navy: var(--logo-navy);
+  --ink: var(--logo-text);
+  --muted: var(--logo-muted);
+  --line: var(--logo-line);
+  --soft: var(--logo-ice);
+  --grad-brand: linear-gradient(125deg, #04134A 0%, #0A2FC4 55%, #2F6BFF 100%);
+  --grad-btn: linear-gradient(115deg, #0B43D9 0%, #2F6BFF 100%);
+  --grad-page: linear-gradient(180deg, #FFFFFF 0%, #F6F9FF 45%, #EAF1FF 100%);
+}
+
+/* Make the logo read as a premium brand mark against the blue header. */
+#logo,
+.site-logo,
+.logo-img,
+body > header .logo img,
+body > header img.site-logo,
+body > header img.logo-img,
+.logo-wrap img,
+.brand-logo img {
+  display: block;
+  width: min(210px, 64vw);
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  padding: 7px;
+  margin: 0 auto 18px;
+  border: 1px solid rgba(219, 230, 255, 0.98);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 58%, #EAF1FF 100%);
+  box-shadow: 0 14px 34px rgba(2, 16, 72, 0.24),
+              0 0 0 5px rgba(255, 255, 255, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  filter: none;
+}
+
+/* Maintain the brand palette in cards and controls without overusing gradients. */
+#services .ss-card,
+#services article,
+#services .service-card,
+.services-container > *,
+.ss-container > * {
+  border-color: #D8E4FF;
+  background: linear-gradient(150deg, #FFFFFF 0%, #FFFFFF 66%, #F0F5FF 100%);
+}
+
+#services .ss-card:hover,
+#services article:hover,
+#services .service-card:hover,
+.services-container > *:hover,
+.ss-container > *:hover {
+  border-color: #8EB0FF;
+  box-shadow: 0 24px 50px rgba(10, 47, 196, 0.18);
+}
+
+body .sidebar-rail {
+  border-color: rgba(219, 230, 255, 0.98);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 44px rgba(4, 26, 92, 0.18);
+}
+
+body .sidebar-rail button:hover,
+body .sidebar-rail a:hover,
+body .sidebar-rail button.is-active,
+body .sidebar-rail a.is-active,
+body .sidebar-rail button[aria-current="page"],
+body .sidebar-rail a[aria-current="page"] {
+  background: linear-gradient(120deg, #0A2FC4, #2F6BFF);
+}
+
+@media (max-width: 600px) {
+  #logo,
+  .site-logo,
+  .logo-img,
+  body > header .logo img,
+  body > header img.site-logo,
+  body > header img.logo-img,
+  .logo-wrap img,
+  .brand-logo img {
+    width: min(165px, 50vw);
+    padding: 6px;
+    margin-bottom: 14px;
+    border-radius: 16px;
+  }
+}
+
+/* Rental Property Listing Grid */
+
+.property-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1250px;
+    margin: 40px auto;
+    padding: 0 25px;
+    align-items: stretch;
+}
+
+/* Individual Property Cards */
+
+.property-listings .ss-card {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 12px 35px rgba(20, 55, 150, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-listings .ss-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(20, 55, 150, 0.2);
+}
+
+/* Property Images */
+
+.property-listings .ss-card img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+/* Property Information */
+
+.property-listings .ss-card h3,
+.property-listings .ss-card p {
+    margin-left: 22px;
+    margin-right: 22px;
+}
+
+.property-listings .ss-card h3 {
+    margin-top: 22px;
+    color: #102c75;
+}
+
+.property-listings .ss-card p:last-child {
+    margin-bottom: 24px;
+}
+
+/* Property Contact Buttons */
+
+.property-contact {
+    display: flex;
+    gap: 12px;
+    padding: 10px 22px 24px;
+    flex-wrap: wrap;
+}
+
+.property-contact a {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    text-decoration: none;
+    padding: 13px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn {
+    background: #16a34a;
+    color: white !important;
+}
+
+.whatsapp-btn:hover {
+    background: #12813c;
+    transform: translateY(-3px);
+}
+
+.call-btn {
+    background: #1745d1;
+    color: white !important;
+}
+
+.call-btn:hover {
+    background: #0b2d9c;
+    transform: translateY(-3px);
+}
+
+/* Mobile Responsive Property Cards */
+
+@media (max-width: 768px) {
+
+    .property-listings {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+        gap: 22px;
+    }
+
+    .property-listings .ss-card img {
+        height: 220px;
+    }
+
+    .property-contact {
+        flex-direction: column;
+        padding: 10px 18px 22px;
+    }
+
+    .property-contact a {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+
+/* ==========================================
+   PRAAZ - SHARED PROPERTY CARD DESIGN
+   Consistent across all property webpages
+========================================== */
+
+.property-listings {
+    width: min(1200px, 92%);
+    margin: 40px auto 65px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    align-items: stretch;
+    background: transparent !important;
+}
+
+/* Main card */
+.property-listings .ss-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+
+    width: 100% !important;
+    min-width: 0;
+    min-height: 0 !important;
+    height: 100%;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: #ffffff !important;
+    border: 1px solid #dce6ff !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+
+    box-shadow: 0 12px 35px rgba(20, 55, 150, 0.10) !important;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Remove old circular decorations */
+.property-listings .ss-card::before,
+.property-listings .ss-card::after,
+.property-listings .property-card-link::before,
+.property-listings .property-card-link::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Clickable card content */
+.property-listings .property-card-link {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+
+    width: 100% !important;
+    min-width: 0;
+    flex: 1;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    color: inherit !important;
+    text-decoration: none !important;
+    background: #ffffff !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    position: relative !important;
+}
+
+/* Property cover image */
+.property-listings .property-card-link img {
+    display: block !important;
+    width: 100% !important;
+    height: 260px !important;
+    min-height: 0 !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Property title */
+.property-listings .property-card-link h3 {
+    display: block !important;
+    color: #102c75 !important;
+    font-size: 23px !important;
+    font-weight: 700 !important;
+    line-height: 1.3;
+
+    margin: 22px 24px 10px !important;
+    padding: 0 !important;
+}
+
+/* Property information */
+.property-listings .property-card-link p {
+    display: block !important;
+    color: #64748b !important;
+    font-size: 16px !important;
+    line-height: 1.6;
+
+    margin: 6px 24px !important;
+    padding: 0 !important;
+}
+
+/* Details link */
+.property-listings .view-details-link {
+    display: inline-block !important;
+    color: #1745d1 !important;
+    font-size: 15px;
+    font-weight: 700;
+
+    margin: 12px 24px 22px !important;
+}
+
+/* Contact buttons */
+.property-listings .property-contact {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px;
+
+    width: auto !important;
+    padding: 0 24px 24px !important;
+    margin: auto 0 0 !important;
+
+    background: #ffffff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.property-listings .property-contact a {
+    display: flex !important;
+    flex: 1 1 0;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 0;
+    min-height: 52px;
+
+    padding: 12px 15px !important;
+    margin: 0 !important;
+
+    border: 0 !important;
+    border-radius: 13px !important;
+
+    color: #ffffff !important;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 700;
+
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.property-listings .whatsapp-btn {
+    background: #16a34a !important;
+}
+
+.property-listings .call-btn {
+    background: #1745d1 !important;
+}
+
+.property-listings .property-contact a:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+}
+
+/* Card hover */
+.property-listings .ss-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(20, 55, 150, 0.16) !important;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+    .property-listings {
+        gap: 20px;
+    }
+
+    .property-listings .property-card-link img {
+        height: 220px !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .property-listings {
+        width: 92%;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin: 25px auto 45px;
+    }
+
+    .property-listings .property-card-link img {
+        height: 230px !important;
+    }
+
+    .property-listings .property-card-link h3 {
+        font-size: 21px !important;
+        margin: 18px 18px 8px !important;
+    }
+
+    .property-listings .property-card-link p {
+        margin: 6px 18px !important;
+    }
+
+    .property-listings .view-details-link {
+        margin: 10px 18px 18px !important;
+    }
+
+    .property-listings .property-contact {
+        padding: 0 18px 20px !important;
+        gap: 10px;
+    }
+
+    .property-listings .property-contact a {
+        min-height: 48px;
+        padding: 10px 8px !important;
+        font-size: 14px;
+    }
+}
+
+
+/* ============================================
+   PRAAZ INFRA AND REALTY - PROPERTY SEARCH
+============================================ */
+
+/* Main search container */
+
+.search-section {
+    width: min(1100px, calc(100% - 48px));
+    margin: 35px auto 50px;
+    padding: 24px 28px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f3f7ff 100%
+    );
+
+    border: 1px solid #dce6ff;
+    border-radius: 18px;
+
+    box-shadow: 0 12px 35px rgba(16, 42, 86, 0.08);
+}
+
+/* Search form */
+
+form.property-search-form {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Search input wrapper */
+
+.search-input-wrapper {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Search input */
+
+form.property-search-form .search-input-wrapper input {
+    display: block;
+    width: 100%;
+    height: 58px;
+
+    box-sizing: border-box;
+    padding: 0 20px 0 52px;
+
+    background: #ffffff;
+    border: 1.5px solid #d7e1f2;
+    border-radius: 12px;
+
+    color: #102a56;
+    font-size: 16px;
+
+    outline: none;
+    box-shadow: none;
+
+    transition: border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Placeholder */
+
+.search-input-wrapper input::placeholder {
+    color: #9aa8bf;
+}
+
+/* Input focus */
+
+form.property-search-form .search-input-wrapper input:focus {
+    border-color: #2878d0;
+    box-shadow: 0 0 0 4px rgba(40, 120, 208, 0.10);
+}
+
+/* Search icon */
+
+.location-search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 21px;
+    height: 21px;
+
+    color: #7183a5;
+    pointer-events: none;
+}
+
+/* Search button */
+
+form.property-search-form .property-search-btn {
+    display: inline-flex;
+    flex: 0 0 185px;
+
+    width: 185px;
+    height: 58px;
+
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 0 15px;
+    white-space: nowrap;
+
+    background: linear-gradient(
+        120deg,
+        #102a56,
+        #2878d0
+    );
+
+    border: none;
+    border-radius: 12px;
+
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 18px rgba(16, 42, 86, 0.16);
+
+    transition: all 0.25s ease;
+}
+
+/* Button icon */
+
+.property-search-btn svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+/* Button hover */
+
+form.property-search-form .property-search-btn:hover {
+    background: linear-gradient(
+        120deg,
+        #2878d0,
+        #102a56
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 22px rgba(16, 42, 86, 0.22);
+}
+
+/* Search description */
+
+.search-hint {
+    margin: 14px 0 0;
+
+    color: #71809a;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ============================================
+   TABLET RESPONSIVENESS
+============================================ */
+
+@media (max-width: 768px) {
+
+    .search-section {
+        width: 92%;
+        padding: 20px;
+    }
+
+    form.property-search-form .property-search-btn {
+        flex-basis: 170px;
+        width: 170px;
+    }
+
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+============================================ */
+
+@media (max-width: 600px) {
+
+    .search-section {
+        width: 92%;
+        margin: 25px auto 35px;
+        padding: 18px;
+    }
+
+    form.property-search-form {
+        flex-direction: column !important;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .search-input-wrapper {
+        width: 100%;
+    }
+
+    form.property-search-form .property-search-btn {
+        flex: 0 0 52px;
+        width: 100%;
+        height: 52px;
+    }
+
+    .search-hint {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+}
+
+
+/* ==========================================
+   PRAAZ - SEARCH BAR WIDTH CORRECTION
+========================================== */
+
+.search-section {
+    width: min(1100px, calc(100vw - 80px)) !important;
+    max-width: none !important;
+    margin: 35px auto 50px !important;
+    padding: 24px 30px !important;
+    box-sizing: border-box;
+}
+
+/* Keep input and button on one line */
+
+form.property-search-form {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 16px;
+    width: 100% !important;
+}
+
+/* Give more space to location input */
+
+.search-input-wrapper {
+    flex: 1 1 0 !important;
+    min-width: 0;
+    width: auto !important;
+}
+
+form.property-search-form .search-input-wrapper input {
+    width: 100% !important;
+    height: 58px;
+    box-sizing: border-box;
+}
+
+/* Make search button shorter */
+
+form.property-search-form .property-search-btn {
+    flex: 0 0 165px !important;
+    width: 165px !important;
+    min-width: 165px;
+    height: 58px;
+    padding: 0 12px !important;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+    .search-section {
+        width: calc(100% - 32px) !important;
+        padding: 18px !important;
+    }
+
+    form.property-search-form {
+        flex-direction: column !important;
+        align-items: stretch;
+    }
+
+    .search-input-wrapper {
+        width: 100% !important;
+    }
+
+    form.property-search-form .property-search-btn {
+        flex: 0 0 52px !important;
+        width: 100% !important;
+        min-width: 0;
+    }
+}
+
+
+
+
+/* ==========================================
+   PRAAZ INFRA & REALTY
+   PREMIUM SOCIAL MEDIA BUTTONS
+========================================== */
+
+#social-platforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+/* Base button styling */
+
+#social-platforms .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 125px;
+    padding: 13px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    box-shadow: 0 5px 15px rgba(10, 30, 65, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* Subtle shine animation */
+
+#social-platforms .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.22),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+    transition: left 0.55s ease;
+    z-index: -1;
+}
+
+#social-platforms .btn:hover::before {
+    left: 150%;
+}
+
+/* Hover animation */
+
+#social-platforms .btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(10, 30, 65, 0.25);
+}
+
+#social-platforms .btn:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+/* Facebook */
+
+#social-platforms .btn-facebook {
+    background: linear-gradient(135deg, #1877F2, #0756B5);
+}
+
+/* Instagram */
+
+#social-platforms .btn-instagram {
+    background: linear-gradient(
+        135deg,
+        #833AB4,
+        #E1306C,
+        #FCAF45
+    );
+}
+
+/* WhatsApp */
+
+#social-platforms .btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+/* LinkedIn */
+
+#social-platforms .btn-linkedin {
+    background: linear-gradient(135deg, #0A66C2, #004182);
+}
+
+/* Keyboard accessibility */
+
+#social-platforms .btn:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 600px) {
+
+    #social-platforms {
+        gap: 12px;
+        padding: 10px 5px;
+    }
+
+    #social-platforms .btn {
+        min-width: 115px;
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #social-platforms .btn,
+    #social-platforms .btn::before {
+        transition: none;
+    }
+
+    #social-platforms .btn:hover {
+        transform: none;
+    }
+
+}

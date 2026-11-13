@@ -1,0 +1,97 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plots and Land | Praaz Infra and Realty</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="{% url 'home' %}">
+            <img id="logo"
+                 src="{% static 'images/praaz_icon.svg' %}"
+                 alt="Praaz Infra and Realty Logo"
+                 width="110"
+                 height="110">
+        </a>
+
+        <h1>PRAAZ INFRA AND REALTY</h1>
+    </header>
+
+    <hr>
+
+    <!-- Navigation -->
+    <nav class="main-nav" aria-label="Main navigation">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'rent' %}">Rent</a>
+    <a href="{% url 'sales' %}">Sales</a>
+    <a href="{% url 'commercial' %}">Commercial</a>
+    <a href="{% url 'interior' %}">Interior</a>
+</nav>
+
+    <hr>
+
+    <!-- Page Introduction -->
+    <section id="home">
+        <h2>Find Your Perfect Plot or Land</h2>
+
+        <p>
+            Explore residential plots, commercial land and
+            investment opportunities with Praaz Infra and Realty.
+            Find the right location for your future plans.
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- Plot and Land Listings -->
+    <section id="featured-properties">
+
+        <h2>Available Plots and Land</h2>
+
+        <div class="property-listings">
+
+            
+{% for property in properties %}
+
+    {% include 'includes/property_card.html' with property=property %}
+
+{% empty %}
+
+    <p>
+        No plots or land are currently available.
+        Please check back soon!
+    </p>
+
+{% endfor %}
+
+
+        </div>
+
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <h3>Praaz Infra and Realty</h3>
+
+        <p>Crafting Landmarks, Creating Legacies</p>
+
+        <p>Contact us to discuss your land requirements.</p>
+
+        <p>&copy; 2026 Praaz Infra and Realty. All rights reserved.</p>
+
+    </footer>
+
+</body>
+</html>

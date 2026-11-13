@@ -1,0 +1,336 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ property.title }} | Praaz Infra and Realty</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        .detail-container {
+            max-width: 1200px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .detail-title {
+            color: #102c75;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .detail-location {
+            color: #64748b;
+            font-size: 18px;
+        }
+
+        .main-property-image {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 22px;
+            cursor: zoom-in;
+            box-shadow: 0 12px 35px rgba(20,55,150,.12);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 22px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: transform .25s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.04);
+        }
+
+        .detail-information {
+            background: white;
+            padding: 28px;
+            margin-top: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(20,55,150,.10);
+        }
+
+        .detail-price {
+            color: #1745d1;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .detail-specifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+            color: #475569;
+        }
+
+        .detail-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .detail-contact a {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .detail-whatsapp {
+            background: #16a34a;
+        }
+
+        .detail-call {
+            background: #1745d1;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,.92);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-modal img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 38px;
+            cursor: pointer;
+        }
+
+        @media(max-width: 768px) {
+            .main-property-image {
+                height: 280px;
+            }
+
+            .detail-title {
+                font-size: 25px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .detail-information {
+                padding: 20px;
+            }
+
+            .detail-contact {
+                flex-direction: column;
+            }
+        }
+        .detail-information {
+    color: #ffffff;
+}
+
+.detail-information p,
+.detail-specifications,
+.detail-specifications span {
+    color: #e8efff;
+}
+
+.detail-information h2,
+.detail-information h3,
+.detail-price {
+    color: #ffffff;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="{% url 'home' %}">
+            <img id="logo"
+                 src="{% static 'images/praaz_icon.svg' %}"
+                 alt="Praaz Logo"
+                 width="110"
+                 height="110">
+        </a>
+
+        <h1>PRAAZ INFRA AND REALTY</h1>
+    </header>
+
+    <hr>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="{% url 'rent' %}">Rent</a>
+        <a href="{% url 'sales' %}">Sales</a>
+        <a href="{% url 'commercial' %}">Commercial</a>
+        <a href="{% url 'plots' %}">Plots / Land</a>
+        <a href="{% url 'interior' %}">Interior</a>
+    </nav>
+
+    <main class="detail-container">
+
+        <!-- Property Heading -->
+        <h2 class="detail-title">{{ property.title }}</h2>
+
+        <p class="detail-location">
+            <span>Location:</span> {{ property.location }}
+        </p>
+
+        <!-- Main Cover Photograph -->
+        {% if property.cover_image %}
+            <img
+                id="mainPropertyImage"
+                class="main-property-image"
+                src="{{ property.cover_image.url }}"
+                alt="{{ property.title }}"
+                onclick="openImage(this.src)">
+        {% endif %}
+
+        <!-- Additional Property Photographs -->
+        <section>
+            <h2>Property Photo Gallery</h2>
+
+            <div class="gallery-grid">
+
+                {% for photo in gallery_images %}
+
+                    <img
+                        class="gallery-image"
+                        src="{{ photo.image.url }}"
+                        alt="{{ photo.caption|default:property.title }}"
+                        title="{{ photo.caption }}"
+                        onclick="openImage(this.src)">
+
+                {% empty %}
+
+                    <p>Additional property photographs will be available soon.</p>
+
+                {% endfor %}
+
+            </div>
+        </section>
+
+        <!-- Property Information -->
+        <section class="detail-information">
+
+            <h2>Property Details</h2>
+
+            <p class="detail-price">
+                ₹{{ property.price|floatformat:0 }}
+            </p>
+
+            <div class="detail-specifications">
+
+                {% if property.area_sqft %}
+                    <span>📐 {{ property.area_sqft }} sq. ft.</span>
+                {% endif %}
+
+                {% if property.bedrooms %}
+                    <span>🛏 {{ property.bedrooms }} Bedrooms</span>
+                {% endif %}
+
+                {% if property.bathrooms %}
+                    <span>🛁 {{ property.bathrooms }} Bathrooms</span>
+                {% endif %}
+
+                <span>Availability: {{ property.get_availability_display }}</span>
+
+            </div>
+
+            <h3>Description</h3>
+
+            <p>{{ property.description|linebreaksbr }}</p>
+
+            <h3>Property Location</h3>
+
+            <p>{{ property.location }}</p>
+
+            <!-- Contact Options -->
+            <div class="detail-contact">
+
+                <a
+                    class="detail-whatsapp"
+                    href="https://wa.me/916203130033?text=Hello%2C%20I%20am%20interested%20in%20{{ property.title|urlencode }}%20in%20{{ property.location|urlencode }}."
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    WhatsApp Enquiry
+                </a>
+
+                <a
+                    class="detail-call"
+                    href="tel:+916203130033">
+                    Call Now
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Full-screen Image Viewer -->
+    <div id="imageModal"
+         class="image-modal"
+         onclick="closeImage()">
+
+        <span class="modal-close">&times;</span>
+
+        <img id="modalImage" src="" alt="Property photograph">
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>Praaz Infra and Realty</h3>
+        <p>Crafting Landmarks, Creating Legacies</p>
+        <p>&copy; 2026 Praaz Infra and Realty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openImage(imageUrl) {
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeImage() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+
+</body>
+</html>
