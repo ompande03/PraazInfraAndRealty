@@ -2352,17 +2352,17 @@ form.property-search-form .property-search-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 
-    min-width: 125px;
-    padding: 13px 20px;
+    min-width: 145px;
+    padding: 16px 25px;
 
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border-radius: 14px;
 
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: 0.3px;
 
@@ -2460,9 +2460,9 @@ form.property-search-form .property-search-btn {
     }
 
     #social-platforms .btn {
-        min-width: 115px;
-        padding: 12px 15px;
-        font-size: 13px;
+        min-width: 125px;
+        padding: 14px 18px;
+        font-size: 14px;
     }
 
 }
