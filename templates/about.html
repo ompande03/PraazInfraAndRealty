@@ -1,0 +1,477 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Praaz Infra & Realty</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        .about-section {
+            padding: 90px 8%;
+        }
+
+        .about-container {
+            max-width: 1320px;
+            margin: auto;
+        }
+
+        .about-label {
+            color: #4385f8;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 22px;
+        }
+
+        .about-heading {
+            font-family: Georgia, serif;
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 1.05;
+            color: #103d68;
+            font-weight: 700;
+        }
+
+        .about-heading span {
+            color: #4786f7;
+        }
+
+        .about-text {
+            color: #66788d;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-services {
+            background: #f1f6fc;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 60px;
+            border-top: 1px solid #dce6f1;
+        }
+
+        .service-item {
+            padding: 30px;
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid #dce6f1;
+            transition: 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: #e5f0fc;
+            transform: translateY(-2px);
+        }
+
+        .service-icon {
+            min-width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #d5e3f2;
+            border-radius: 14px;
+            color: #4786f7;
+            font-size: 22px;
+        }
+
+        .service-item h3 {
+            color: #103d68;
+            font-family: Georgia, serif;
+            margin: 0 0 10px;
+        }
+
+        .story-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .story-year {
+            font-family: Georgia, serif;
+            font-size: 72px;
+            font-weight: bold;
+            color: #103d68;
+        }
+
+        .founders-section {
+            background: #f1f6fc;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-top: 55px;
+        }
+
+        .founder-card {
+            background: white;
+            border: 1px solid #e0e9f2;
+            border-top: 3px solid #103d68;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 12px 30px rgba(15, 55, 95, 0.06);
+            transition: 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(15, 55, 95, 0.10);
+        }
+
+        .founder-avatar {
+            width: 58px;
+            height: 58px;
+            background: #103d68;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            font-family: Georgia, serif;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .founder-card h3 {
+            color: #103d68;
+            font-family: Georgia, serif;
+            font-size: 26px;
+        }
+
+        .founder-role {
+            color: #4786f7;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+
+        .locations-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .location-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .location-pill {
+            padding: 15px 24px;
+            border: 1px solid #dce6f1;
+            border-radius: 50px;
+            color: #103d68;
+            font-weight: 600;
+            background: white;
+        }
+
+        .about-cta {
+            border-top: 1px solid #dce6f1;
+            padding: 100px 8%;
+        }
+
+        .about-cta-button {
+            display: inline-flex;
+            margin-top: 25px;
+            padding: 18px 30px;
+            background: #103d68;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .about-cta-button:hover {
+            background: #4786f7;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 60px 6%;
+            }
+
+            .about-intro,
+            .story-section,
+            .locations-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .service-grid,
+            .founder-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-year {
+                font-size: 55px;
+            }
+
+            .service-item {
+                padding: 24px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- WHO WE ARE -->
+<section class="about-section">
+    <div class="about-container about-intro">
+        <div>
+            <div class="about-label">WHO WE ARE</div>
+            <h1 class="about-heading">
+                A real estate partner
+                <span>you can rely on.</span>
+            </h1>
+        </div>
+
+        <div class="about-text">
+            <p>
+                Founded in <strong>2020</strong>, Praaz Infra & Realty provides
+                practical real estate solutions for customers looking to buy,
+                sell, rent, invest, build or design a property.
+            </p>
+
+            <p>
+                We understand that every property requirement is different.
+                A homebuyer may need the right location and budget, an investor
+                may be looking for long-term potential, while a business may need
+                the right commercial space.
+            </p>
+
+            <p>
+                Our approach is simple: understand what you need, help you
+                explore the right options and support you throughout the process.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="about-section about-services">
+    <div class="about-container">
+        <div class="about-label">WHAT WE DO</div>
+
+        <h2 class="about-heading">
+            Multiple real estate solutions<br>
+            <span>under one roof.</span>
+        </h2>
+
+        <p class="about-text">
+            From property transactions to investment, interiors and construction,
+            we support different stages of your property journey.
+        </p>
+
+        <div class="service-grid">
+
+            <div class="service-item">
+                <div class="service-icon">⌂</div>
+                <div>
+                    <h3>Buy & Sell</h3>
+                    <p class="about-text">
+                        Guidance for buying, selling and upgrading residential
+                        and commercial properties.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">⌑</div>
+                <div>
+                    <h3>Rent</h3>
+                    <p class="about-text">
+                        Residential and commercial rental solutions based on
+                        your location and budget.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">↗</div>
+                <div>
+                    <h3>Investment</h3>
+                    <p class="about-text">
+                        Property opportunities aligned with your investment
+                        goals and preferred markets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">◉</div>
+                <div>
+                    <h3>Interior Design</h3>
+                    <p class="about-text">
+                        Functional and thoughtfully designed interiors
+                        built around your requirements.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">⌂</div>
+                <div>
+                    <h3>Construction</h3>
+                    <p class="about-text">
+                        Construction support focused on quality,
+                        functionality and project requirements.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-icon">▣</div>
+                <div>
+                    <h3>Property Consultation</h3>
+                    <p class="about-text">
+                        Clear guidance to help you make better property
+                        decisions with confidence.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="about-section">
+    <div class="about-container story-section">
+
+        <div>
+            <div class="story-year">2020</div>
+            <p class="about-text">Founded</p>
+        </div>
+
+        <div>
+            <div class="about-label">OUR STORY</div>
+
+            <h2 class="about-heading">
+                From a simple idea to a
+                <span>growing real estate business.</span>
+            </h2>
+
+            <p class="about-text">
+                Praaz Infra & Realty started in 2020 with a simple idea:
+                make the property experience easier and more customer-focused.
+            </p>
+
+            <p class="about-text">
+                Since then, we have expanded our services beyond traditional
+                property transactions to include buying, selling, renting,
+                investment, consultation, interior design and construction.
+            </p>
+
+            <p class="about-text">
+                Today, we continue to focus on understanding our customers,
+                providing practical solutions and building relationships
+                that last beyond a single transaction.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="about-section founders-section">
+    <div class="about-container">
+        <div class="about-label">OUR FOUNDERS</div>
+
+        <h2 class="about-heading">
+            The people behind <span>Praaz Infra<br>& Realty.</span>
+        </h2>
+
+        <div class="founder-grid">
+
+            <div class="founder-card">
+                <div class="founder-avatar">R</div>
+                <div class="founder-role">FOUNDER</div>
+                <h3>Rajnikant Dubey</h3>
+                <p class="about-text">
+                    Rajnikant Dubey is a Founder of Praaz Infra & Realty,
+                    helping shape the company's vision and commitment to
+                    delivering trusted, transparent and customer-focused
+                    real estate solutions.
+                </p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-avatar">P</div>
+                <div class="founder-role">FOUNDER</div>
+                <h3>Pratyush Sahay</h3>
+                <p class="about-text">
+                    Pratyush Sahay is a Founder of Praaz Infra & Realty,
+                    helping shape the company's approach to delivering reliable
+                    and comprehensive real estate solutions across property
+                    transactions, investment, consultation, interiors
+                    and construction.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="about-section">
+    <div class="about-container locations-section">
+        <div>
+            <div class="about-label">WHERE WE OPERATE</div>
+            <h2 class="about-heading">
+                Serving key <span>real estate markets.</span>
+            </h2>
+        </div>
+
+        <div class="location-pills">
+            <div class="location-pill">⌖ Delhi</div>
+            <div class="location-pill">⌖ Noida</div>
+            <div class="location-pill">⌖ Gurgaon</div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="about-cta">
+    <div class="about-container">
+        <div class="about-label">LET'S CONNECT</div>
+
+        <h2 class="about-heading">
+            Have a property<br>
+            <span>requirement?</span>
+        </h2>
+
+        <p class="about-text">
+            Whether you want to buy, sell, rent, invest, build or simply
+            understand your options, our team is here to help.
+        </p>
+
+        <a href="tel:+919355910319" class="about-cta-button">
+            Talk to an expert ↗
+        </a>
+    </div>
+</section>
+
+</body>
+</html>

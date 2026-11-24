@@ -91,22 +91,44 @@ def property_detail(request, pk):
     })
 
 
+
 def search_properties(request):
+    keyword = (
+        request.GET.get('keyword')
+        or request.GET.get('q')
+        or ''
+    ).strip()
 
-    query = request.GET.get('location', '').strip()
+    location = request.GET.get('location', '').strip()
 
-    matching_properties = Property.objects.filter(
+    properties = Property.objects.filter(
         is_published=True,
         availability='available'
     )
 
-    if query:
-        matching_properties = matching_properties.filter(
-            Q(location__icontains=query) |
-            Q(title__icontains=query)
+    if keyword:
+        properties = properties.filter(
+            Q(title__icontains=keyword) |
+            Q(location__icontains=keyword)
         )
 
-    return render(request, 'search_results.html', {
-        'properties': matching_properties,
-        'query': query,
-    })
+    if location:
+        properties = properties.filter(
+            location__icontains=location
+        )
+
+    properties = properties.distinct()
+
+    context = {
+        'properties': properties,
+        'query': keyword,
+        'location': location,
+        'result_count': properties.count(),
+    }
+
+    return render(request, 'search_results.html', context)
+
+
+
+def about(request):
+    return render(request, "about.html")

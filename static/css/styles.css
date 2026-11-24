@@ -2031,303 +2031,6 @@ body .sidebar-rail a[aria-current="page"] {
 }
 
 
-/* ============================================
-   PRAAZ INFRA AND REALTY - PROPERTY SEARCH
-============================================ */
-
-/* Main search container */
-
-.search-section {
-    width: min(1100px, calc(100% - 48px));
-    margin: 35px auto 50px;
-    padding: 24px 28px;
-    box-sizing: border-box;
-
-    background: linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #f3f7ff 100%
-    );
-
-    border: 1px solid #dce6ff;
-    border-radius: 18px;
-
-    box-shadow: 0 12px 35px rgba(16, 42, 86, 0.08);
-}
-
-/* Search form */
-
-form.property-search-form {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 14px;
-
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-/* Search input wrapper */
-
-.search-input-wrapper {
-    position: relative;
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-/* Search input */
-
-form.property-search-form .search-input-wrapper input {
-    display: block;
-    width: 100%;
-    height: 58px;
-
-    box-sizing: border-box;
-    padding: 0 20px 0 52px;
-
-    background: #ffffff;
-    border: 1.5px solid #d7e1f2;
-    border-radius: 12px;
-
-    color: #102a56;
-    font-size: 16px;
-
-    outline: none;
-    box-shadow: none;
-
-    transition: border-color 0.25s ease,
-                box-shadow 0.25s ease;
-}
-
-/* Placeholder */
-
-.search-input-wrapper input::placeholder {
-    color: #9aa8bf;
-}
-
-/* Input focus */
-
-form.property-search-form .search-input-wrapper input:focus {
-    border-color: #2878d0;
-    box-shadow: 0 0 0 4px rgba(40, 120, 208, 0.10);
-}
-
-/* Search icon */
-
-.location-search-icon {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 21px;
-    height: 21px;
-
-    color: #7183a5;
-    pointer-events: none;
-}
-
-/* Search button */
-
-form.property-search-form .property-search-btn {
-    display: inline-flex;
-    flex: 0 0 185px;
-
-    width: 185px;
-    height: 58px;
-
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-
-    padding: 0 15px;
-    white-space: nowrap;
-
-    background: linear-gradient(
-        120deg,
-        #102a56,
-        #2878d0
-    );
-
-    border: none;
-    border-radius: 12px;
-
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow: 0 7px 18px rgba(16, 42, 86, 0.16);
-
-    transition: all 0.25s ease;
-}
-
-/* Button icon */
-
-.property-search-btn svg {
-    width: 19px;
-    height: 19px;
-    flex-shrink: 0;
-}
-
-/* Button hover */
-
-form.property-search-form .property-search-btn:hover {
-    background: linear-gradient(
-        120deg,
-        #2878d0,
-        #102a56
-    );
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 10px 22px rgba(16, 42, 86, 0.22);
-}
-
-/* Search description */
-
-.search-hint {
-    margin: 14px 0 0;
-
-    color: #71809a;
-    font-size: 13px;
-    text-align: center;
-}
-
-/* ============================================
-   TABLET RESPONSIVENESS
-============================================ */
-
-@media (max-width: 768px) {
-
-    .search-section {
-        width: 92%;
-        padding: 20px;
-    }
-
-    form.property-search-form .property-search-btn {
-        flex-basis: 170px;
-        width: 170px;
-    }
-
-}
-
-/* ============================================
-   MOBILE RESPONSIVENESS
-============================================ */
-
-@media (max-width: 600px) {
-
-    .search-section {
-        width: 92%;
-        margin: 25px auto 35px;
-        padding: 18px;
-    }
-
-    form.property-search-form {
-        flex-direction: column !important;
-        align-items: stretch;
-        gap: 12px;
-    }
-
-    .search-input-wrapper {
-        width: 100%;
-    }
-
-    form.property-search-form .property-search-btn {
-        flex: 0 0 52px;
-        width: 100%;
-        height: 52px;
-    }
-
-    .search-hint {
-        font-size: 12px;
-        line-height: 1.5;
-    }
-
-}
-
-
-/* ==========================================
-   PRAAZ - SEARCH BAR WIDTH CORRECTION
-========================================== */
-
-.search-section {
-    width: min(1100px, calc(100vw - 80px)) !important;
-    max-width: none !important;
-    margin: 35px auto 50px !important;
-    padding: 24px 30px !important;
-    box-sizing: border-box;
-}
-
-/* Keep input and button on one line */
-
-form.property-search-form {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    gap: 16px;
-    width: 100% !important;
-}
-
-/* Give more space to location input */
-
-.search-input-wrapper {
-    flex: 1 1 0 !important;
-    min-width: 0;
-    width: auto !important;
-}
-
-form.property-search-form .search-input-wrapper input {
-    width: 100% !important;
-    height: 58px;
-    box-sizing: border-box;
-}
-
-/* Make search button shorter */
-
-form.property-search-form .property-search-btn {
-    flex: 0 0 165px !important;
-    width: 165px !important;
-    min-width: 165px;
-    height: 58px;
-    padding: 0 12px !important;
-    white-space: nowrap;
-    font-size: 14px;
-}
-
-/* Mobile layout */
-
-@media (max-width: 600px) {
-    .search-section {
-        width: calc(100% - 32px) !important;
-        padding: 18px !important;
-    }
-
-    form.property-search-form {
-        flex-direction: column !important;
-        align-items: stretch;
-    }
-
-    .search-input-wrapper {
-        width: 100% !important;
-    }
-
-    form.property-search-form .property-search-btn {
-        flex: 0 0 52px !important;
-        width: 100% !important;
-        min-width: 0;
-    }
-}
-
-
 
 
 /* ==========================================
@@ -2481,3 +2184,450 @@ form.property-search-form .property-search-btn {
     }
 
 }
+
+
+.about-nav-link {
+    text-decoration: none;
+    color: #0b3b66;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 18px;
+    border: 1px solid rgba(11, 59, 102, 0.15);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.about-nav-link:hover {
+    background: #0b3b66;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Position About Us at the top-right corner */
+header {
+    position: relative;
+}
+
+.about-nav-link {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 10;
+
+    padding: 11px 22px;
+    background: #103d68;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.about-nav-link:hover {
+    background: #4786f7;
+    transform: translateY(-2px);
+}
+
+/* Mobile positioning */
+@media (max-width: 600px) {
+    .about-nav-link {
+        top: 12px;
+        right: 12px;
+        padding: 8px 13px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   FLOATING SOCIAL BAR — DESKTOP + MOBILE
+========================================= */
+
+/* FLOATING SOCIAL BAR - ALWAYS BOTTOM RIGHT */
+.floating-social-bar {
+    display: flex;
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+
+    flex-direction: column;
+    gap: 8px;
+
+    z-index: 99999;
+}
+
+/* Social buttons */
+.social-float {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    text-decoration: none;
+
+    border-radius: 12px 0 0 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+
+    transition: all 0.25s ease;
+}
+
+.social-float svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Brand colors */
+.social-float.instagram {
+    background: #E1306C;
+}
+
+.social-float.facebook {
+    background: #1877F2;
+}
+
+.social-float.whatsapp {
+    background: #25D366;
+}
+
+.social-float.phone {
+    background: #FF6B35;
+}
+
+/* Desktop hover */
+.social-float:hover {
+    width: 54px;
+    filter: brightness(1.1);
+}
+
+/* Mobile sizing */
+@media (max-width: 768px) {
+    .social-float {
+        width: 42px;
+        height: 42px;
+    }
+
+    .social-float svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* ==========================================
+   PRAAZ PREMIUM DARK FOOTER
+========================================== */
+
+.site-footer {
+    background: #041326;
+    color: #d5dfef;
+    padding: 75px 8% 30px;
+    margin-top: 70px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* MAIN FOOTER LAYOUT */
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.35fr 0.8fr 1.15fr;
+    gap: 80px;
+    padding-bottom: 70px;
+}
+
+/* BRAND */
+
+.footer-brand {
+    max-width: 440px;
+}
+
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    width: 180px;
+    max-height: 150px;
+    object-fit: contain;
+    display: block;
+}
+
+.footer-description {
+    color: #b8c8dc;
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 15px 0 25px;
+}
+
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 17px;
+    border: 1px solid rgba(105, 165, 255, 0.35);
+    background: rgba(65, 125, 205, 0.10);
+    border-radius: 50px;
+    color: #c6ddff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #91bbff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #91bbff;
+}
+
+/* FOOTER HEADINGS */
+
+.footer-links h4,
+.footer-contact h4 {
+    color: #7fb0ff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 35px;
+}
+
+/* QUICK LINKS */
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-links a {
+    color: #d5dfef;
+    text-decoration: none;
+    margin-bottom: 22px;
+    font-size: 16px;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #78aaff;
+    transform: translateX(4px);
+}
+
+/* CONTACT */
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    color: #d5dfef;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.contact-icon {
+    color: #80b3ff;
+    font-size: 20px;
+    min-width: 20px;
+    margin-top: 2px;
+}
+
+a.contact-item {
+    transition: color 0.25s ease;
+}
+
+a.contact-item:hover {
+    color: #80b3ff;
+}
+
+/* BOTTOM BAR */
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.footer-bottom p {
+    color: #8499b5;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: #8499b5;
+    font-size: 14px;
+}
+
+.footer-legal a {
+    color: #8499b5;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: #ffffff;
+}
+
+.footer-separator {
+    color: #60738e;
+}
+
+/* RESPONSIVE TABLET */
+
+@media (max-width: 900px) {
+
+    .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        max-width: 550px;
+    }
+
+}
+
+/* RESPONSIVE MOBILE */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding: 50px 25px 25px;
+        margin-top: 45px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding-bottom: 45px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-logo img {
+        width: 155px;
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+        margin-bottom: 22px;
+    }
+
+    .footer-links a {
+        margin-bottom: 17px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding-top: 25px;
+    }
+
+    .footer-legal {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+}
+
+
+/* =========================================
+   FIX: RESTORE MAIN NAVIGATION ABOVE SEARCH
+========================================= */
+
+/* Your actual navigation class is main-nav */
+body > nav.main-nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative !important;
+    z-index: 1000 !important;
+
+    width: fit-content;
+    max-width: calc(100% - 32px);
+
+    margin: -28px auto 24px !important;
+    padding: 8px !important;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    background: #ffffff;
+    border: 1px solid #dbe6ff;
+    border-radius: 50px;
+    box-shadow: 0 10px 28px rgba(10, 47, 196, 0.15);
+}
+
+body > nav.main-nav a {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    font-size: 15px !important;
+    color: #0a2fc4 !important;
+    font-weight: 600;
+    text-decoration: none;
+
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+body > nav.main-nav a:hover {
+    color: #ffffff !important;
+    background: linear-gradient(120deg, #0a2fc4, #2f6bff);
+}
+
+/* Keep search panel below navigation */
+.praaz-searchbar {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px !important;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+    body > nav.main-nav {
+        width: 94%;
+        max-width: 94%;
+        margin-top: -20px !important;
+        border-radius: 18px;
+    }
+
+    body > nav.main-nav a {
+        font-size: 13px !important;
+        padding: 8px 10px;
+    }
+}
+
+
+
+
+

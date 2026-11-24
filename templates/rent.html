@@ -144,15 +144,90 @@
     <hr>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer class="site-footer">
 
-        <h3>Praaz Infra and Realty</h3>
+    <div class="footer-main">
 
-        <p>Crafting Landmarks, Creating Legacies</p>
+        <!-- BRAND COLUMN -->
+        <div class="footer-brand">
 
-        <p>Contact us to discuss your rental requirements.</p>
+            <a href="{% url 'home' %}" class="footer-logo">
+                <img src="{% static 'images/praaz_logo.svg' %}"
+                     alt="Praaz Infra and Realty">
+            </a>
 
-        <p>&copy; 2026 Praaz Infra and Realty. All rights reserved.</p>
+            <p class="footer-description">
+                Thoughtful homes, strategic investments, and premier
+                property advisory across Delhi NCR.
+            </p>
+
+            <div class="footer-badge">
+                <span class="badge-dot"></span>
+                RERA Registered &amp; Verified Advisory
+            </div>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+        <div class="footer-links">
+
+            <h4>QUICK LINKS</h4>
+
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'home' %}#featured-properties">Featured Properties</a>
+            <a href="{% url 'home' %}#services">Our Services</a>
+            <a href="{% url 'about' %}">About Praaz</a>
+            <a href="{% url 'home' %}#contact">Contact Advisory</a>
+
+        </div>
+
+
+        <!-- CONTACT COLUMN -->
+        <div class="footer-contact">
+
+            <h4>DIRECT CONTACT</h4>
+
+            <a href="mailto:info@praazinfraandrealty.com" class="contact-item">
+                <span class="contact-icon">✉</span>
+                <span>info@praazinfraandrealty.com</span>
+            </a>
+
+            <a href="tel:+919355910319" class="contact-item">
+                <span class="contact-icon">☎</span>
+                <span>+91 9355910319</span>
+            </a>
+
+            <div class="contact-item">
+                <span class="contact-icon">⌖</span>
+                <span>Serving Delhi NCR</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER BOTTOM -->
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Praaz Infra &amp; Realty. All rights reserved.
+        </p>
+
+        <div class="footer-legal">
+
+            <a href="#">Privacy Policy</a>
+            <span class="footer-separator">•</span>
+
+            <a href="#">Terms of Service</a>
+            <span class="footer-separator">•</span>
+
+            <span>Delhi NCR</span>
+
+        </div>
+
+    </div>
 
     </footer>
 

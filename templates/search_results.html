@@ -1,8 +1,8 @@
 
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,100 +10,494 @@
     <title>Search Results | Praaz Infra and Realty</title>
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+        /* Search results page */
+
+        .results-page {
+            min-height: 70vh;
+            padding: 55px 6%;
+            background: #f5f7fb;
+        }
+
+        .results-heading {
+            max-width: 1250px;
+            margin: 0 auto 32px;
+        }
+
+        .results-heading h1 {
+            color: #102b50;
+            font-size: clamp(26px, 4vw, 38px);
+            margin-bottom: 10px;
+        }
+
+        .results-heading p {
+            color: #68778b;
+            font-size: 15px;
+        }
+
+        .results-count {
+            color: #173f70;
+            font-weight: 700;
+        }
+
+        .property-results-grid {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 26px;
+        }
+
+        .result-property-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 22px rgba(16, 43, 80, 0.08);
+            border: 1px solid #e8edf4;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .result-property-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(16, 43, 80, 0.14);
+        }
+
+        .result-property-image {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+            display: block;
+            background: #e8edf4;
+        }
+
+        .result-property-content {
+            padding: 21px;
+        }
+
+        .property-category {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #eaf2fc;
+            color: #174b82;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .result-property-content h2 {
+            font-size: 19px;
+            line-height: 1.4;
+            color: #142e4f;
+            margin: 0 0 9px;
+        }
+
+        .property-location {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .property-price {
+            color: #123f70;
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 17px;
+        }
+
+        .property-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 0;
+            border-top: 1px solid #edf0f5;
+            border-bottom: 1px solid #edf0f5;
+            color: #536477;
+            font-size: 13px;
+        }
+
+        .property-description {
+            color: #718096;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 14px 0;
+        }
+
+        .view-property-button {
+            display: block;
+            width: 100%;
+            padding: 13px 16px;
+            text-align: center;
+            text-decoration: none;
+            background: #123f70;
+            color: #ffffff;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .view-property-button:hover {
+            background: #0b2b50;
+            color: #ffffff;
+        }
+
+        .no-results {
+            max-width: 650px;
+            margin: 55px auto;
+            padding: 45px 25px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 5px 22px rgba(16, 43, 80, 0.06);
+        }
+
+        .no-results h2 {
+            color: #17385e;
+            margin-bottom: 12px;
+        }
+
+        .no-results p {
+            color: #718096;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .back-home-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #123f70;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1000px) {
+            .property-results-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .results-page {
+                padding: 35px 5%;
+            }
+
+            .property-results-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .result-property-image {
+                height: 215px;
+            }
+        }
+
+
+/* ===== Search Results Page Layout Fix ===== */
+
+/* Prevent oversized logo */
+header img,
+.header-container img,
+.logo {
+    width: 75px !important;
+    height: 75px !important;
+    max-width: 75px !important;
+    object-fit: contain;
+    display: block;
+}
+
+/* Header layout */
+.header-container {
+    min-height: 100px;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header-container h2 {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+}
+
+/* Navigation */
+.main-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 16px 20px;
+}
+
+/* Main results area */
+.results-page {
+    width: 100%;
+    max-width: 1450px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 55px 6%;
+    box-sizing: border-box;
+}
+
+/* Results heading */
+.results-heading {
+    width: 100%;
+    margin: 0 auto 35px;
+}
+
+.results-heading h1 {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Property cards */
+.property-results-grid {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Footer alignment */
+.main-footer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    padding: 45px 7%;
+    text-align: left;
+}
+
+.footer-content > div {
+    min-width: 0;
+}
+
+.footer-content a {
+    display: block;
+    margin: 8px 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header-container h2 {
+        font-size: 19px;
+    }
+
+    .main-navigation {
+        gap: 15px;
+    }
+
+    .property-results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+    </style>
 </head>
 
 <body>
 
+    <!-- Website Header -->
     <header>
-        <a href="{% url 'home' %}">
-            <img id="logo"
-                 src="{% static 'images/praaz_icon.svg' %}"
-                 alt="Praaz Infra and Realty Logo"
-                 width="110"
-                 height="110">
-        </a>
+        <div class="header-container">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/praaz_icon.svg' %}"
+                     alt="Praaz Infra and Realty Logo"
+                     class="logo">
+            </a>
 
-        <h1>PRAAZ INFRA AND REALTY</h1>
+            <h2>PRAAZ INFRA AND REALTY</h2>
+
+            <a href="{% url 'about' %}">About Us</a>
+        </div>
     </header>
 
-    <hr>
-
-    <nav class="main-nav" aria-label="Main navigation">
+    <!-- Main Navigation -->
+    <nav class="main-navigation">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'rent' %}">Rent</a>
-        <a href="{% url 'sales' %}">Sales</a>
+        <a href="{% url 'sales' %}">Sale</a>
         <a href="{% url 'commercial' %}">Commercial</a>
         <a href="{% url 'plots' %}">Plots / Land</a>
         <a href="{% url 'interior' %}">Interior</a>
     </nav>
 
-    <hr>
+    <!-- Search Results -->
+    <main class="results-page">
 
-    <section id="home">
+        <div class="results-heading">
+            <h1>Property Search Results</h1>
 
-        <h2>Search Properties</h2>
+            <p>
+                {% if query or location %}
+                    Showing properties matching
+                    <strong>
+                        {% if query %}"{{ query }}"{% endif %}
+                        {% if query and location %} in {% endif %}
+                        {% if location %}"{{ location }}"{% endif %}
+                    </strong>
+                {% else %}
+                    Explore our available properties
+                {% endif %}
+            </p>
 
-        <form action="{% url 'search_properties' %}"
-              method="GET"
-              class="group">
+            <p class="results-count">
+                {{ result_count }} properties found
+            </p>
+        </div>
 
-            <input
-                type="search"
-                class="input"
-                name="location"
-                value="{{ query }}"
-                placeholder="Enter property location..."
-                required>
+        {% if properties %}
 
-            <button type="submit" class="search-btn">
-                Search
-            </button>
+            <div class="property-results-grid">
 
-        </form>
+                {% for property in properties %}
 
-        {% if query %}
-            <p>Search results for: <strong>{{ query }}</strong></p>
-        {% endif %}
+                    <article class="result-property-card">
 
-    </section>
+                        {% if property.cover_image %}
+                            <img
+                                src="{{ property.cover_image.url }}"
+                                alt="{{ property.title }}"
+                                class="result-property-image"
+                            >
+                        {% else %}
+                            <img
+                                src="{% static 'images/property-placeholder.jpg' %}"
+                                alt="Property image unavailable"
+                                class="result-property-image"
+                            >
+                        {% endif %}
 
-    <hr>
+                        <div class="result-property-content">
 
-    <section id="featured-properties">
+                            <span class="property-category">
+                                {{ property.get_category_display }}
+                            </span>
 
-        <h2>Matching Properties</h2>
+                            <h2>{{ property.title }}</h2>
 
-        <div class="property-listings">
+                            <p class="property-location">
+                                &#128205; {{ property.location }}
+                            </p>
 
-            {% for property in properties %}
+                            <div class="property-price">
+                                &#8377;{{ property.price|floatformat:0 }}
+                            </div>
 
-                {% include 'includes/property_card.html' with property=property %}
+                            <div class="property-features">
 
-            {% empty %}
+                                {% if property.bedrooms %}
+                                    <span>
+                                        &#128719; {{ property.bedrooms }} BHK
+                                    </span>
+                                {% endif %}
+
+                                {% if property.bathrooms %}
+                                    <span>
+                                        &#128703; {{ property.bathrooms }} Bathrooms
+                                    </span>
+                                {% endif %}
+
+                                {% if property.area_sqft %}
+                                    <span>
+                                        &#9634; {{ property.area_sqft }} sq.ft.
+                                    </span>
+                                {% endif %}
+
+                            </div>
+
+                            <p class="property-description">
+                                {{ property.description|truncatewords:18 }}
+                            </p>
+
+                            <a
+                                href="{% url 'property_detail' property.pk %}"
+                                class="view-property-button"
+                            >
+                                View Property Details
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="no-results">
+
+                <h2>No Properties Found</h2>
 
                 <p>
-                    No properties found for "{{ query }}".
-                    Try searching another location.
+                    We couldn't find any properties matching your search.
+                    Please try another location or keyword.
                 </p>
 
-            {% endfor %}
+                <a href="{% url 'home' %}" class="back-home-button">
+                    Back to Homepage
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+
+            <div>
+                <h3>Praaz Infra and Realty</h3>
+                <p>Your trusted partner in finding the right property.</p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'rent' %}">Rent</a>
+                <a href="{% url 'sales' %}">Sale</a>
+                <a href="{% url 'about' %}">About Us</a>
+            </div>
+
+            <div>
+                <h3>Contact Us</h3>
+                <p>Phone: +91 9355910319</p>
+                <p>Email: info@praazinfraandrealty.com</p>
+                <p>Delhi NCR, India</p>
+            </div>
 
         </div>
 
-    </section>
-
-    <hr>
-
-    <footer id="contact">
-
-        <h3>Praaz Infra and Realty</h3>
-
-        <p>Crafting Landmarks, Creating Legacies</p>
-
-        <p>Contact: +91 6203130033</p>
-
-        <p>&copy; 2026 Praaz Infra and Realty. All rights reserved.</p>
-
+        <div class="footer-bottom">
+            <p>
+                &copy; {% now "Y" %} Praaz Infra and Realty.
+                All Rights Reserved.
+            </p>
+        </div>
     </footer>
 
 </body>
