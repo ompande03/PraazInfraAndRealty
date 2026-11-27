@@ -107,3 +107,31 @@ class PropertyImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.property.title}"
+
+
+
+class PropertyEnquiry(models.Model):
+    SERVICE_CHOICES = [
+        ('buy', 'Buy a Property'),
+        ('rent', 'Rent a Property'),
+        ('commercial', 'Commercial Property'),
+        ('plot', 'Plot / Land'),
+        ('interior', 'Interior Design'),
+        ('other', 'Other'),
+    ]
+
+    full_name = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    service = models.CharField(max_length=30, choices=SERVICE_CHOICES)
+    preferred_location = models.CharField(max_length=250)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_contacted = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Property Enquiry"
+        verbose_name_plural = "Property Enquiries"
+
+    def __str__(self):
+        return f"{self.full_name} - {self.get_service_display()}"

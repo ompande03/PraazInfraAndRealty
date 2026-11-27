@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Property, PropertyImage
+from .models import Property, PropertyImage, PropertyEnquiry
 
 
 class PropertyImageInline(admin.TabularInline):
@@ -96,7 +96,27 @@ class PropertyAdmin(admin.ModelAdmin):
             )
         return "No cover image uploaded"
 
+@admin.register(PropertyEnquiry)
+class PropertyEnquiryAdmin(admin.ModelAdmin):
+    list_display = (
+        'full_name',
+        'email',
+        'phone',
+        'service',
+        'preferred_location',
+        'created_at',
+        'is_contacted',
+    )
+
+    list_filter = ('service', 'is_contacted', 'created_at')
+    search_fields = ('full_name', 'email', 'phone', 'preferred_location')
+    readonly_fields = ('created_at',)
+    list_editable = ('is_contacted',)
+    ordering = ('-created_at',)
+
 
 admin.site.site_header = "PRAAZ INFRA AND REALTY"
 admin.site.site_title = "Praaz Admin"
 admin.site.index_title = "Property Management Dashboard"
+
+

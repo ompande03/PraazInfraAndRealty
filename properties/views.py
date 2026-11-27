@@ -2,6 +2,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Property
 from django.db.models import Q
+from django.contrib import messages
+from django.shortcuts import redirect
+from .models import PropertyEnquiry
 
 def home(request):
     featured_properties = Property.objects.filter(
@@ -132,3 +135,43 @@ def search_properties(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+
+def submit_enquiry(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        service = request.POST.get('service', '').strip()
+        preferred_location = request.POST.get('preferred_location', '').strip()
+
+        valid_services = dict(PropertyEnquiry.SERVICE_CHOICES)
+
+        if (
+            full_name
+            and email
+            and phone
+            and service in valid_services
+            and preferred_location
+        ):
+            PropertyEnquiry.objects.create(
+                full_name=full_name,
+                email=email,
+                phone=phone,
+                service=service,
+                preferred_location=preferred_location,
+            )
+
+            messages.success(
+                request,
+                "Thank you! Your enquiry has been submitted successfully. "
+                "Our property advisor will contact you shortly."
+            )
+        else:
+            messages.error(
+                request,
+                "Please complete all fields correctly before submitting."
+            )
+
+    return redirect('home')

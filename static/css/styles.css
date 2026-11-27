@@ -2628,6 +2628,226 @@ body > nav.main-nav a:hover {
 }
 
 
+/* =========================================
+   PRAAZ PROPERTY ENQUIRY SECTION
+========================================= */
+
+.property-enquiry-section {
+    width: 100%;
+    padding: 90px 6% 100px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #f1f6fc, #e8f0ff);
+}
+
+.enquiry-heading {
+    max-width: 900px;
+    margin: 0 auto 45px;
+    text-align: left;
+}
+
+.enquiry-eyebrow {
+    display: inline-block;
+    color: #2362d5;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.enquiry-heading h2 {
+    color: #102f52;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.15;
+    margin: 0 0 22px;
+}
+
+.enquiry-heading p {
+    max-width: 750px;
+    color: #73869c;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.enquiry-form-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 45px 50px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border: 1px solid #e5edf7;
+    border-radius: 30px;
+
+    box-shadow: 0 20px 55px rgba(17, 50, 94, 0.09);
+}
+
+.enquiry-form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.enquiry-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.enquiry-form-group label {
+    color: #173e60;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.enquiry-form-group input,
+.enquiry-form-group select {
+    width: 100%;
+    min-height: 76px;
+    padding: 18px 25px;
+    box-sizing: border-box;
+
+    background: #edf6fc;
+    border: 1px solid #dce8f3;
+    border-radius: 17px;
+
+    color: #183b5b;
+    font-size: 18px;
+    font-family: inherit;
+
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.enquiry-form-group input::placeholder {
+    color: #8496a8;
+}
+
+.enquiry-form-group input:focus,
+.enquiry-form-group select:focus {
+    outline: none;
+    border-color: #b7d0ff;
+    background: #f5faff;
+    box-shadow: none;
+}
+
+.enquiry-form-group select {
+    cursor: pointer;
+}
+
+.enquiry-submit-btn {
+    width: 100%;
+    min-height: 95px;
+    margin-top: 5px;
+    padding: 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    border: none;
+    border-radius: 18px;
+
+    background: #103f68;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.enquiry-submit-btn:hover {
+    background: #0b2d4d;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(16, 63, 104, 0.2);
+}
+
+.enquiry-btn-arrow {
+    font-size: 25px;
+    transition: transform 0.2s ease;
+}
+
+.enquiry-submit-btn:hover .enquiry-btn-arrow {
+    transform: translateX(5px);
+}
+
+/* Submission feedback */
+
+.enquiry-messages {
+    margin-bottom: 25px;
+}
+
+.enquiry-message {
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.enquiry-message.success {
+    color: #17633c;
+    background: #e9f8ef;
+    border: 1px solid #c9ebd7;
+}
+
+.enquiry-message.error {
+    color: #8c3030;
+    background: #fff0f0;
+    border: 1px solid #f0d0d0;
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    .property-enquiry-section {
+        padding: 55px 5% 65px;
+    }
+
+    .enquiry-heading {
+        margin-bottom: 30px;
+    }
+
+    .enquiry-heading h2 {
+        font-size: 36px;
+    }
+
+    .enquiry-heading p {
+        font-size: 16px;
+    }
+
+    .enquiry-form-card {
+        padding: 28px 22px;
+        border-radius: 22px;
+    }
+
+    .enquiry-form-card form {
+        gap: 23px;
+    }
+
+    .enquiry-form-group label {
+        font-size: 13px;
+    }
+
+    .enquiry-form-group input,
+    .enquiry-form-group select {
+        min-height: 66px;
+        font-size: 16px;
+        padding: 16px;
+    }
+
+    .enquiry-submit-btn {
+        min-height: 75px;
+        font-size: 19px;
+    }
+}
+
 
 
 
